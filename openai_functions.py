@@ -18,11 +18,6 @@ api_key = "sk-svcacct-GKTLsVX_k40dbZcyLsSOm5xxeWofLmuLUa6J9vxhEuL6DT3BlbkFJQFKZy
 GOOGLE_API_KEY = "AIzaSyCOpUJ8Lm-nRqTxGpBm4sPSJV3c-6dvIR0"
 GOOGLE_CSE_ID = "526dacbf1a8cd4623"
 
-os.environ['REQUESTS_CA_BUNDLE'] = 'C:/Users/VU146XX/OneDrive - EY/Desktop/Proposals/CRMS/CRMS Tool/CRMS/.venv/Lib/site-packages/certifi/Zscaler Root CA.crt'
-
-os.environ['GOOGLE_API_KEY'] = "AIzaSyCOpUJ8Lm-nRqTxGpBm4sPSJV3c-6dvIR0"
-os.environ['GOOGLE_CSE_ID'] = "526dacbf1a8cd4623"
-
 chat = ChatOpenAI(
     openai_api_key = api_key,
     temperature=0.7
@@ -38,24 +33,24 @@ chat_prompt = ChatPromptTemplate(
 
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
-search = GoogleSearchAPIWrapper()
+# search = GoogleSearchAPIWrapper()
 
-tool = StructuredTool.from_function(
-    name="google_search",
-    description="Input to this tool must be a SINGLE JSON STRING.",
-    func=search.run
-)
+# tool = StructuredTool.from_function(
+#     name="google_search",
+#     description="Input to this tool must be a SINGLE JSON STRING.",
+#     func=search.run
+# )
 
 agent = OpenAIFunctionsAgent(
     llm=chat,
-    prompt=chat_prompt,
-    tools=[tool]
+    prompt=chat_prompt
+    # tools=[tool]
 )
 
 agent_executor = AgentExecutor(
     agent=agent,
     verbose=True,
-    tools=[tool],
+    # tools=[tool]
     memory=memory
 )
 
