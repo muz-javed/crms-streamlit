@@ -33,24 +33,24 @@ chat_prompt = ChatPromptTemplate(
 
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
-# search = GoogleSearchAPIWrapper()
+search = GoogleSearchAPIWrapper()
 
-# tool = StructuredTool.from_function(
-#     name="google_search",
-#     description="Input to this tool must be a SINGLE JSON STRING.",
-#     func=search.run
-# )
+tool = StructuredTool.from_function(
+    name="google_search",
+    description="Input to this tool must be a SINGLE JSON STRING.",
+    func=search.run
+)
 
 agent = OpenAIFunctionsAgent(
     llm=chat,
-    prompt=chat_prompt
-    # tools=[tool]
+    prompt=chat_prompt,
+    tools=[tool]
 )
 
 agent_executor = AgentExecutor(
     agent=agent,
     verbose=True,
-    # tools=[tool]
+    tools=[tool],
     memory=memory
 )
 
