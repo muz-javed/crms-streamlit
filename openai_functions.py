@@ -14,7 +14,6 @@ from langchain.agents import OpenAIFunctionsAgent, AgentExecutor
 from langchain.schema import SystemMessage
 from langchain.memory import ConversationBufferMemory
 
-
 api_key = "sk-svcacct-GKTLsVX_k40dbZcyLsSOm5xxeWofLmuLUa6J9vxhEuL6DT3BlbkFJQFKZyZNQh3pLQeGSd5qsJuRKPBjAxOpZAqzuYV_erZ-AA"
 GOOGLE_API_KEY = "AIzaSyCOpUJ8Lm-nRqTxGpBm4sPSJV3c-6dvIR0"
 GOOGLE_CSE_ID = "526dacbf1a8cd4623"
