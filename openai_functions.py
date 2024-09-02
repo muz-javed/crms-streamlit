@@ -18,6 +18,9 @@ api_key = "sk-svcacct-GKTLsVX_k40dbZcyLsSOm5xxeWofLmuLUa6J9vxhEuL6DT3BlbkFJQFKZy
 GOOGLE_API_KEY = "AIzaSyBjWM0cyxXBjoiRgdh7cFbSJImF6U05HpU"
 GOOGLE_CSE_ID = "d6a7169ef0a274385"
 
+os.environ['GOOGLE_API_KEY'] = "AIzaSyBjWM0cyxXBjoiRgdh7cFbSJImF6U05HpU"
+os.environ['GOOGLE_CSE_ID'] = "d6a7169ef0a274385"
+
 chat = ChatOpenAI(
     openai_api_key = api_key,
     temperature=0.7
@@ -71,5 +74,8 @@ def bankruptcy_status(df):
 
     # Reassign the reordered columns back to the DataFrame
     df = df[cols]
+
+
+
 
     return df
