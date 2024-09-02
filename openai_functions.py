@@ -15,7 +15,7 @@ from langchain.schema import SystemMessage
 from langchain.memory import ConversationBufferMemory
 
 
-api_key = "sk-proj-a2VJxVko48z6j5ivFZfwT3BlbkFJVKCQiV1gTGTmhykNS4vd"
+api_key = "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"
 GOOGLE_API_KEY = "AIzaSyCOpUJ8Lm-nRqTxGpBm4sPSJV3c-6dvIR0"
 GOOGLE_CSE_ID = "526dacbf1a8cd4623"
 
