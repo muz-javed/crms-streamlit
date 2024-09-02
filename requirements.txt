@@ -10,3 +10,4 @@ textblob
 langchain_community
 docx
 google-api-python-client
+requests
