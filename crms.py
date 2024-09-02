@@ -13,7 +13,20 @@ upload_raw_file = st.file_uploader('Upload Data Files', type = 'xlsx')
 if upload_raw_file:
   raw_file = pd.read_excel(upload_raw_file).head(5)
 
+  with st.spinner('Checking Bankruptcy Status'):
+    raw_file = bankruptcy_status(raw_file)
+  
+    cols = st.columns([1, 0.7, 0.7])
+    with cols[0]:
+      st.markdown("""<div style='text-align: left; padding-left: 10px; color: green; border-radius: 5px;'><p>Bankruptcy status check completed.</p></div>""", unsafe_allow_html=True)
+
+
+  ### CONVERT TO THE POWER-BI FORMAT ###
+  raw_file.insert(0, 'added_at', datetime.now())
+
   st.write(raw_file)
+
+
 
 
 
