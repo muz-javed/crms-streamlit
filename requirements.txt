@@ -2,3 +2,5 @@ numpy
 pandas
 openpyxl
 streamlit
+langchain
+openai
