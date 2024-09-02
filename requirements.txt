@@ -2,5 +2,5 @@ pandas
 openpyxl
 streamlit
 openai
-numpy==2.1.0
-langchain==0.2.15
+numpy
+langchain
