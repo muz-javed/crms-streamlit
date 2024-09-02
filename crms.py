@@ -2,7 +2,8 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 from datetime import datetime
-# import langchain
+import langchain
+import openai
 
 # from openai_functions import bankruptcy_status
 
