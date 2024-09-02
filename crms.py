@@ -45,6 +45,11 @@ if upload_raw_file:
 GOOGLE_API_KEY = "AIzaSyBjWM0cyxXBjoiRgdh7cFbSJImF6U05HpU"
 GOOGLE_CSE_ID = "d6a7169ef0a274385"
 
+import os
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+GOOGLE_CSE_ID = os.getenv("GOOGLE_CSE_ID")
+
+
 import requests
 
 # Replace these with your actual API key and CSE ID
