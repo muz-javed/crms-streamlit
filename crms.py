@@ -42,6 +42,34 @@ if upload_raw_file:
 
 
 
+  GOOGLE_API_KEY = "AIzaSyBjWM0cyxXBjoiRgdh7cFbSJImF6U05HpU"
+GOOGLE_CSE_ID = "d6a7169ef0a274385"
+
+import requests
+
+# Replace these with your actual API key and CSE ID
+query = 'Python programming'  # Replace with your search query
+
+# Construct the URL for the API request
+url = f"https://www.googleapis.com/customsearch/v1?key={GOOGLE_API_KEY}&cx={GOOGLE_CSE_ID}&q={query}"
+
+# Send the GET request to the API
+response = requests.get(url)
+
+# Parse the JSON response
+results = response.json()
+
+# Check if the request was successful
+if 'items' in results:
+    for i, item in enumerate(results['items'], start=1):
+        st.write(f"Result {i}:")
+        st.write(f"Title: {item['title']}")
+        st.write(f"Link: {item['link']}\n")
+else:
+    st.write("No results found or there was an error with the request.")
+
+
+
 
 
 
