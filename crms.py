@@ -4,7 +4,7 @@ import streamlit as st
 from datetime import datetime
 # import langchain
 
-from openai_functions import bankruptcy_status
+# from openai_functions import bankruptcy_status
 
 st.markdown(f"""<div style="border-radius: 5px;"><h3 style="text-align:left; color: black; font-weight: bold;">Credit Risk Management Standards</h3></div>""", unsafe_allow_html=True)
 
@@ -15,16 +15,16 @@ if upload_raw_file:
 
   st.write(raw_file)
 
-  with st.spinner('Checking Bankruptcy Status'):
-    raw_file = bankruptcy_status(raw_file)
+  # with st.spinner('Checking Bankruptcy Status'):
+  #   raw_file = bankruptcy_status(raw_file)
   
-    cols = st.columns([1, 0.7, 0.7])
-    with cols[0]:
-      st.markdown("""<div style='text-align: left; padding-left: 10px; color: green; border-radius: 5px;'><p>Bankruptcy status check completed.</p></div>""", unsafe_allow_html=True)
+  #   cols = st.columns([1, 0.7, 0.7])
+  #   with cols[0]:
+  #     st.markdown("""<div style='text-align: left; padding-left: 10px; color: green; border-radius: 5px;'><p>Bankruptcy status check completed.</p></div>""", unsafe_allow_html=True)
 
 
-  ### CONVERT TO THE POWER-BI FORMAT ###
-  raw_file.insert(0, 'added_at', datetime.now())
+  # ### CONVERT TO THE POWER-BI FORMAT ###
+  # raw_file.insert(0, 'added_at', datetime.now())
 
   st.write(raw_file)
 
