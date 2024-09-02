@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
+import langchain
+import openai
 
 # from openai_functions import bankruptcy_status
 
