@@ -5,3 +5,7 @@ openai
 numpy
 langchain
 pydantic
+langchain-openai
+textblob
+langchain_community
+docx
