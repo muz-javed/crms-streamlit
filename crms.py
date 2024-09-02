@@ -27,7 +27,7 @@ if upload_raw_file:
   # raw_file['default_trigger'] = 0
   # raw_file.loc[raw_file['']]
 
-  st.write(raw_file[7:].columns)
+  st.write(raw_file[:, 8:].columns)
 
   st.write(raw_file)
 
