@@ -8,7 +8,7 @@ from google.cloud import bigquery
 from google.oauth2 import service_account
 from openai_functions import bankruptcy_status
 
-def load_df_to_bq(df, dataset_id, table_id)
+def load_df_to_bq(df, dataset_id, table_id):
   # Path to your service account key file (JSON format)
   key_path = "gen-lang-client-0773467639-eb3bb34e9803.json"
   
