@@ -24,10 +24,13 @@ if upload_raw_file:
   ### CONVERT TO THE POWER-BI FORMAT ###
   raw_file.insert(0, 'added_at', datetime.now())
 
-  # raw_file['default_trigger'] = 0
-  # raw_file.loc[raw_file['']]
+  raw_file['default_trigger'] = raw_file[raw_file.columns[6:]].sum(axis = 1)
+  raw_file.loc[raw_file['default_trigger'] > 1, 'default_trigger'] = 1
 
-  st.write(raw_file[raw_file.columns[6:]].sum(axis = 1))
+  cols = raw_file.columns.tolist()
+  line_of_business_index = cols.index('line_of_business')
+  cols.insert(line_of_business_index + 1, cols.pop(cols.index("default_trigger")))
+  raw_file = raw_file[cols]
 
   st.write(raw_file)
 
