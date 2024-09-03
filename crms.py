@@ -59,5 +59,6 @@ if upload_raw_file:
   
   st.markdown("""<div style='text-align: left; padding-left: 10px; color: green; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
 
+  st.markdown('[View the dashboard here.](https://app.powerbi.com/groups/me/reports/5a20d194-6580-44f3-b3ad-859db99fa2cf/9e39d52da42790344bc0?experience=power-bi&bookmarkGuid=3121b084064a018d683b)', unsafe_allow_html=True)
 
 
