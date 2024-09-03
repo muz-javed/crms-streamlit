@@ -42,14 +42,14 @@ st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; col
 upload_raw_file = st.file_uploader('', type = 'xlsx')
 
 if upload_raw_file:
-    raw_file = pd.read_excel(upload_raw_file).head(5)
+    raw_file = pd.read_excel(upload_raw_file).head(1)
 
     with st.spinner('Checking Bankruptcy Status'):
         raw_file = bankruptcy_status(raw_file)
   
     cols = st.columns([1, 0.7, 0.7])
     with cols[0]:
-        st.markdown("""<div style='text-align: left; padding-left: 10px; color: green; border-radius: 5px;'><p>Bankruptcy status check completed.</p></div>""", unsafe_allow_html=True)
+        st.markdown("""<div style='text-align: left; padding-left: 10px; color: '#9cdea8'; border-radius: 5px;'><p>Bankruptcy status check completed.</p></div>""", unsafe_allow_html=True)
 
 
     ### CONVERT TO THE POWER-BI FORMAT ###
@@ -84,7 +84,7 @@ if upload_raw_file:
         load_df_to_bq(raw_file.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
         load_df_to_bq(final_df, 'crms_dataset', 'utp_transformed')
   
-    st.markdown("""<div style='text-align: left; padding-left: 10px; color: green; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
+    st.markdown("""<div style='text-align: left; padding-left: 10px; color: '#9cdea8'; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
     st.markdown('[View the dashboard here.](https://app.powerbi.com/groups/me/reports/5a20d194-6580-44f3-b3ad-859db99fa2cf/9e39d52da42790344bc0?experience=power-bi&bookmarkGuid=3121b084064a018d683b)', unsafe_allow_html=True)
 
 
