@@ -21,7 +21,7 @@ st.markdown("""
         margin-bottom: 0px;
     }
     .stSidebar{
-    width: 400px;
+    width: 500px;
     }
     </style>
     """, unsafe_allow_html=True)
