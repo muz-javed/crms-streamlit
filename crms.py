@@ -35,21 +35,14 @@ if upload_raw_file:
   cols.insert(line_of_business_index + 1, cols.pop(cols.index("default_trigger")))
   raw_file = raw_file[cols]
 
-
-
-
-
-
-
-
-dataset_id = 'crms_dataset'
-table_id = 'utp_raw'
-df = raw_file.sort_values('customer_id')
-
-with st.spinner('Data is being loaded...'):
-  load_df_to_bq(df, dataset_id, table_id)
-
-st.markdown("""<div style='text-align: left; padding-left: 10px; color: green; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
+  dataset_id = 'crms_dataset'
+  table_id = 'utp_raw'
+  df = raw_file.sort_values('customer_id')
+  
+  with st.spinner('Data is being loaded...'):
+    load_df_to_bq(df, dataset_id, table_id)
+  
+  st.markdown("""<div style='text-align: left; padding-left: 10px; color: green; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
 
 
 
