@@ -48,21 +48,33 @@ with st.sidebar:
 
 
 
+        # import streamlit as st
+        # import pandas as pd
+        import base64
+        from io import BytesIO
+        
+        # Sample DataFrame to be downloaded as an Excel file
         df = pd.DataFrame({
             'Column1': [1, 2, 3, 4],
             'Column2': ['A', 'B', 'C', 'D']
         })
-        # Convert DataFrame to Excel and save to a buffer
-        excel_buffer = df.to_excel(index=False, engine='xlsxwriter')
         
-        # Encode Excel file to base64
-        b64 = base64.b64encode(excel_buffer).decode()
+        # Create an in-memory buffer
+        buffer = BytesIO()
+        
+        # Save the DataFrame to the buffer as an Excel file
+        df.to_excel(buffer, index=False, engine='xlsxwriter')
+        
+        # Get the content of the buffer and encode it to base64
+        buffer.seek(0)
+        b64 = base64.b64encode(buffer.read()).decode()
         
         # Create a download link
         href = f'<a href="data:application/octet-stream;base64,{b64}" download="sample_data.xlsx">attached</a>'
         
         # Display the text with the hyperlink
         st.markdown(f'Download the {href} file.', unsafe_allow_html=True)
+
 
 
 
