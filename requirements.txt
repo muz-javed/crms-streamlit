@@ -13,4 +13,3 @@ google-api-python-client
 requests
 google-cloud-bigquery
 xlsxwriter
-io
