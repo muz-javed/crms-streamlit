@@ -11,6 +11,18 @@ from google.oauth2 import service_account
 from openai_functions import bankruptcy_status
 from dataframe_functions import load_df_to_bq
 
+st.set_page_config(
+    page_title="My Streamlit App",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    theme={
+        "primaryColor": "#1a73e8",
+        "backgroundColor": "#0e1117",
+        "secondaryBackgroundColor": "#262730",
+        "textColor": "#ffffff",
+    }
+)
+
 st.markdown("""
 <style>
     hr {
