@@ -9,33 +9,26 @@ from google.oauth2 import service_account
 from openai_functions import bankruptcy_status
 from dataframe_functions import load_df_to_bq
 
-# Set theme (experimental)
-st.set_page_config(
-    page_title="Dark Mode Streamlit App",
-    layout="centered",
-    initial_sidebar_state="expanded"
-)
 
-# Inject custom CSS for additional customization
-st.markdown(
-    """
-    <style>
-    body {
-        background-color: #0e1117;
-        color: #fafafa;
+css = """
+<style>
+    .stApp {
+        background-color: #b3c3d9;
     }
-    .sidebar .sidebar-content {
-        background-color: #262730;
+    .css-18e3th9 {
+        background-color: #b3c3d9;
     }
-    .stTextInput, .stButton, .stCheckbox, .stRadio {
-        background-color: #333333;
-        color: #fafafa;
-        border: none;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+</style>
+"""
+
+st.markdown(css, unsafe_allow_html=True)
+
+
+
+
+
+
+
 
 with st.sidebar:
   st.write('')
