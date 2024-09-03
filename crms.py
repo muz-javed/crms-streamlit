@@ -3,6 +3,7 @@ import pandas as pd
 import streamlit as st
 import langchain
 import openai
+import base64
 from datetime import datetime
 from google.cloud import bigquery
 from google.oauth2 import service_account
@@ -44,6 +45,24 @@ with st.sidebar:
             </h5>
         </div>
         """, unsafe_allow_html=True)
+
+
+
+        df = pd.DataFrame({
+            'Column1': [1, 2, 3, 4],
+            'Column2': ['A', 'B', 'C', 'D']
+        })
+        # Convert DataFrame to Excel and save to a buffer
+        excel_buffer = df.to_excel(index=False, engine='xlsxwriter')
+        
+        # Encode Excel file to base64
+        b64 = base64.b64encode(excel_buffer).decode()
+        
+        # Create a download link
+        href = f'<a href="data:application/octet-stream;base64,{b64}" download="sample_data.xlsx">attached</a>'
+        
+        # Display the text with the hyperlink
+        st.markdown(f'Download the {href} file.', unsafe_allow_html=True)
 
 
 
