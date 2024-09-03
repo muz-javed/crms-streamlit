@@ -12,6 +12,7 @@ from dataframe_functions import load_df_to_bq
 st.markdown("""
 <style>
     hr {
+        margin-top: 0px;
         margin-bottom: 0px;
         background-color: white; 
     }
