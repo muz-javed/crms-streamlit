@@ -10,32 +10,16 @@ from openai_functions import bankruptcy_status
 from dataframe_functions import load_df_to_bq
 
 
-# css = """
-# <style>
-#     .stApp {
-#         background-color: #b3c3d9;
-#     }
-#     .css-18e3th9 {
-#         background-color: #b3c3d9;
-#     }
-# </style>
-# """
-
-# st.markdown(css, unsafe_allow_html=True)
-
-
-
-
-
 
 
 
 with st.sidebar:
   st.write('')
 
-st.markdown(f"""<div style="border-radius: 5px;"><h3 style="text-align:left; color: black; font-weight: bold;">Credit Risk Management Standards</h3></div>""", unsafe_allow_html=True)
+st.markdown(f"""<div style="border-radius: 5px;"><h3 style="text-align:left; color: white; font-weight: bold;">Credit Risk Management Standards</h3></div>""", unsafe_allow_html=True)
+st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white; font-weight: bold;">Upload data files</h5></div>""", unsafe_allow_html=True)
 
-upload_raw_file = st.file_uploader('Upload Data Files', type = 'xlsx')
+upload_raw_file = st.file_uploader('', type = 'xlsx')
 
 if upload_raw_file:
   raw_file = pd.read_excel(upload_raw_file)
