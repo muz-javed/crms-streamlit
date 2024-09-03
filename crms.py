@@ -10,18 +10,18 @@ from openai_functions import bankruptcy_status
 from dataframe_functions import load_df_to_bq
 
 
-css = """
-<style>
-    .stApp {
-        background-color: #b3c3d9;
-    }
-    .css-18e3th9 {
-        background-color: #b3c3d9;
-    }
-</style>
-"""
+# css = """
+# <style>
+#     .stApp {
+#         background-color: #b3c3d9;
+#     }
+#     .css-18e3th9 {
+#         background-color: #b3c3d9;
+#     }
+# </style>
+# """
 
-st.markdown(css, unsafe_allow_html=True)
+# st.markdown(css, unsafe_allow_html=True)
 
 
 
