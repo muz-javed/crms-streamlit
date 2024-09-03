@@ -64,7 +64,7 @@ with st.sidebar:
         b64 = base64.b64encode(buffer.read()).decode()
         
         # Create a download link
-        href = f'<a href="data:application/octet-stream;base64,{b64}" download="sample_data.xlsx">attached</a>'
+        href = f'<a href="data:application/octet-stream;base64,{b64}" download="template.xlsx">attached</a>'
         
         # Display the text with the hyperlink
         st.markdown(f'Download the {href} file.', unsafe_allow_html=True)
