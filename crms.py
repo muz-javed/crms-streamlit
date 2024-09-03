@@ -9,7 +9,7 @@ from google.oauth2 import service_account
 from openai_functions import bankruptcy_status
 from dataframe_functions import load_df_to_bq
 
-with st.side_bar:
+with st.sidebar:
   st.write()
 
 st.markdown(f"""<div style="border-radius: 5px;"><h3 style="text-align:left; color: black; font-weight: bold;">Credit Risk Management Standards</h3></div>""", unsafe_allow_html=True)
