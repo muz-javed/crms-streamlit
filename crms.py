@@ -93,7 +93,7 @@ if upload_raw_file:
 
     st.markdown(
         '<span style="color:white; padding-left: 10px;">The dashboard consists of:</span>'
-        '<ul>'
+        '<ul style="padding-left: 10px;">'
         '<li><span style="color:white; padding-left: 10px;">Page 1 - Summary page.</span></li>'
         '<li><span style="color:white; padding-left: 10px;">Page 2 - Detailed page.</span></li>'
         '</ul>',
