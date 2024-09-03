@@ -54,6 +54,7 @@ query = 'Python programming'  # Replace with your search query
 
 # Construct the URL for the API request
 url = f"https://www.googleapis.com/customsearch/v1?key={GOOGLE_API_KEY}&cx={GOOGLE_CSE_ID}&q={query}"
+st.write(url)
 
 # Send the GET request to the API
 response = requests.get(url)
