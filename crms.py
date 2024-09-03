@@ -14,7 +14,7 @@ st.markdown(f"""<div style="border-radius: 5px;"><h3 style="text-align:left; col
 upload_raw_file = st.file_uploader('Upload Data Files', type = 'xlsx')
 
 if upload_raw_file:
-  raw_file = pd.read_excel(upload_raw_file).head(15)
+  raw_file = pd.read_excel(upload_raw_file).head(25)
 
   with st.spinner('Checking Bankruptcy Status'):
     raw_file = bankruptcy_status(raw_file)
