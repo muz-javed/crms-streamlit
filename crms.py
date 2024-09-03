@@ -27,7 +27,7 @@ if upload_raw_file:
   # raw_file['default_trigger'] = 0
   # raw_file.loc[raw_file['']]
 
-  st.write(raw_file.columns[6:].sum(axis = 1))
+  st.write(raw_file[raw_file.columns[6:]].sum(axis = 1))
 
   st.write(raw_file)
 
