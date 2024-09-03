@@ -35,16 +35,16 @@ with st.sidebar:
 
         st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white; ">Follow the below steps:</h5></div>""", unsafe_allow_html=True)
         
-
         st.markdown("""
         <div style="border-radius: 5px;">
             <h5 style="text-align:left; color: white;">
-                <p style="margin-bottom: 2px;">1. Prepare the data as per the template</p>
-                <p style="margin-bottom: 2px;">2. Upload the data file</p>
-                <p style="margin-bottom: 2px;">3. Visualize the data in the dashboard</p>
+                <p style="margin-bottom: 2px; font-size: 12px;">1. Prepare the data as per the template</p>
+                <p style="margin-bottom: 2px; font-size: 12px;">2. Upload the data file</p>
+                <p style="margin-bottom: 2px; font-size: 12px;">3. Visualize the data in the dashboard</p>
             </h5>
         </div>
         """, unsafe_allow_html=True)
+
 
 
 
