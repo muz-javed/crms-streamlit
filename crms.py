@@ -51,6 +51,7 @@ if upload_raw_file:
   
   final_df['cust_def_flag'] = 'No'
   final_df.loc[final_df['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
+  final_df.insert(0, 'added_at', datetime.now())
   
   with st.spinner('Data is being loaded...'):
     load_df_to_bq(raw_file.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
