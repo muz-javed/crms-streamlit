@@ -85,6 +85,13 @@ if upload_raw_file:
         load_df_to_bq(final_df, 'crms_dataset', 'utp_transformed')
   
     st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
-    st.markdown('[View the dashboard here.](https://app.powerbi.com/groups/me/reports/5a20d194-6580-44f3-b3ad-859db99fa2cf/9e39d52da42790344bc0?experience=power-bi&bookmarkGuid=3121b084064a018d683b)', unsafe_allow_html=True)
+    
+
+    
+    st.markdown("<hr>", unsafe_allow_html=True)
+    st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white;">Dashboard</h5></div>""", unsafe_allow_html=True)
+    
+    
+    st.markdown('[Click here](https://app.powerbi.com/groups/me/reports/5a20d194-6580-44f3-b3ad-859db99fa2cf/9e39d52da42790344bc0?experience=power-bi&bookmarkGuid=3121b084064a018d683b)[to view the dashboard]', unsafe_allow_html=True)
 
 
