@@ -34,7 +34,6 @@ if upload_raw_file:
   cols.insert(line_of_business_index + 1, cols.pop(cols.index("default_trigger")))
   raw_file = raw_file[cols]
 
-  # st.write(raw_file)
 
 
 
@@ -42,7 +41,11 @@ if upload_raw_file:
 
 
 
-  
+dataset_id = 'crms_dataset'
+table_id = 'utp_raw'
+df = raw_file.sort_values('customer_id')
+
+def load_df_to_bq(df, dataset_id, table_id)
   # Path to your service account key file (JSON format)
   key_path = "gen-lang-client-0773467639-eb3bb34e9803.json"
   
@@ -53,8 +56,6 @@ if upload_raw_file:
   client = bigquery.Client(credentials=credentials, project=credentials.project_id)
   
   # Define your dataset and table name
-  dataset_id = 'crms_dataset'
-  table_id = 'utp_raw'
   table_full_id = f"{client.project}.{dataset_id}.{table_id}"
   
   # Define the job configuration with schema autodetection
@@ -64,7 +65,7 @@ if upload_raw_file:
   )
   
   # Load the DataFrame into the BigQuery table
-  load_job = client.load_table_from_dataframe(raw_file.sort_values('customer_id'), table_full_id, job_config=job_config)  # Make an API request.
+  load_job = client.load_table_from_dataframe(df, table_full_id, job_config=job_config)  # Make an API request.
 
   with st.spinner('Data is being loaded...'):
     load_job.result()  # Wait for the job to complete.
