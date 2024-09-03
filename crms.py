@@ -25,9 +25,11 @@ st.markdown("""
     .stApp {
         background-color: black;
     }
+    section[data-testid="stSidebar"] > div:first-child {
+        background-color: #262730;
+    }
     </style>
     """, unsafe_allow_html=True)
-
 
 with st.sidebar:
     cols = st.columns([0.3,2.25,1.7])
