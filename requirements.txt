@@ -12,3 +12,6 @@ docx
 google-api-python-client
 requests
 google-cloud-bigquery
+xlsxwriter
+base64
+io
