@@ -53,20 +53,6 @@ with st.sidebar:
         </div>
         """, unsafe_allow_html=True)
 
-
-
-        
-        
-        
-
-
-
-
-
-
-        
-
-
 st.markdown(f"""<div style="border-radius: 5px;"><h3 style="text-align:left; color: white; font-weight: bold;">Credit Risk Management Standards</h3></div>""", unsafe_allow_html=True)
 st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white;">Upload data files</h5></div>""", unsafe_allow_html=True)
@@ -74,7 +60,7 @@ st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; col
 upload_raw_file = st.file_uploader('', type = 'xlsx')
 
 if upload_raw_file:
-    raw_file = pd.read_excel(upload_raw_file).head(5)
+    raw_file = pd.read_excel(upload_raw_file).head(15)
 
     with st.spinner('Checking Bankruptcy Status'):
         raw_file = bankruptcy_status(raw_file)
