@@ -34,10 +34,18 @@ with st.sidebar:
         st.markdown(f"""<div style="border-radius: 5px;"><h4 style="text-align:left; color: white; font-weight: bold;">Default Identification and SICR Dashboards</h4></div>""", unsafe_allow_html=True)
 
         st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white; ">Follow the below steps:</h5></div>""", unsafe_allow_html=True)
-        st.markdown("""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white; ">
-        1. **Prepare the data as per the template**
-        2. **Upload the data file**
-        3. **Visualize the data in the dashboard**</h5></div>""")
+        # import streamlit as st
+
+        st.markdown("""
+        <div style="border-radius: 5px;">
+            <h5 style="text-align:left; color: white;">
+                1. Prepare the data as per the template<br>
+                2. Upload the data file<br>
+                3. Visualize the data in the dashboard
+            </h5>
+        </div>
+        """, unsafe_allow_html=True)
+
 
 
         
