@@ -9,6 +9,52 @@ from google.oauth2 import service_account
 from openai_functions import bankruptcy_status
 from dataframe_functions import load_df_to_bq
 
+# Apply custom CSS for dark mode
+st.markdown(
+    """
+    <style>
+    /* Set background color */
+    body {
+        background-color: #1e1e1e;
+        color: white;
+    }
+
+    /* Set sidebar background color */
+    .css-1d391kg {
+        background-color: #333333;
+    }
+
+    /* Set header text color */
+    .css-1l02zno, .css-1dp5vir {
+        color: white;
+    }
+
+    /* Set widget label color */
+    .css-1kyxreq {
+        color: white;
+    }
+
+    /* Set the color of text input, buttons, etc. */
+    .stTextInput, .stButton, .stCheckbox, .stRadio {
+        background-color: #4a4a4a;
+        color: white;
+    }
+
+    /* Set the border color for input boxes and buttons */
+    .stTextInput input, .stButton button, .stCheckbox, .stRadio {
+        border-color: white;
+    }
+    
+    /* Set the color of markdown text */
+    .css-2trqyj p {
+        color: white;
+    }
+    
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 with st.sidebar:
   st.write('')
 
