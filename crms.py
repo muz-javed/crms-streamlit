@@ -28,7 +28,9 @@ st.markdown("""
 
 
 with st.sidebar:
-  st.image('EY Logo2.PNG')
+  cols = st.columns([1,1])
+  with cols[0]:
+    st.image('EY Logo2.PNG')
 
 st.markdown(f"""<div style="border-radius: 5px;"><h3 style="text-align:left; color: white; font-weight: bold;">Credit Risk Management Standards</h3></div>""", unsafe_allow_html=True)
 st.markdown("<hr>", unsafe_allow_html=True)
