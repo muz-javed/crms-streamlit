@@ -90,6 +90,16 @@ if upload_raw_file:
     
     st.markdown("<hr>", unsafe_allow_html=True)
     st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white;">Dashboard</h5></div>""", unsafe_allow_html=True)
+
+    st.markdown(
+        '<span style="color:white;">The dashboard consists of:</span>'
+        '<ul>'
+        '<li><span style="color:white;">Page 1 - Summary page.</span></li>'
+        '<li><span style="color:white;">Page 2 - Detailed page.</span></li>'
+        '</ul>',
+        unsafe_allow_html=True
+    )
+
     
     
-    st.markdown('<span style="color:white;">Click</span> <a href="https://app.powerbi.com/groups/me/reports/5a20d194-6580-44f3-b3ad-859db99fa2cf/9e39d52da42790344bc0?experience=power-bi&bookmarkGuid=3121b084064a018d683b" style="color:white;">here</a><span style="color:white;"> to view the dashboard</span>', unsafe_allow_html=True)
+    st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://app.powerbi.com/groups/me/reports/5a20d194-6580-44f3-b3ad-859db99fa2cf/9e39d52da42790344bc0?experience=power-bi&bookmarkGuid=3121b084064a018d683b" style="color:white;">here</a><span style="color:white;"> to view the dashboard</span>', unsafe_allow_html=True)
