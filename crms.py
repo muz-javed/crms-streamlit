@@ -23,7 +23,7 @@ st.markdown("""
         margin-bottom: 0px;
     }
     .stApp {
-        background-color: #b3c3d9;
+        background-color: black;
     }
     </style>
     """, unsafe_allow_html=True)
