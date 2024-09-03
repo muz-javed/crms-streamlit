@@ -16,6 +16,10 @@ st.markdown("""
         margin-bottom: 0px;
         background-color: white; 
     }
+    .stFileUploader {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
     </style>
     """, unsafe_allow_html=True)
 
