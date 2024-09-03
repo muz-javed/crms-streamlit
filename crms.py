@@ -30,8 +30,8 @@ with st.sidebar:
     st.image('EY Logo2.PNG')
 
   cols = st.columns([0.3,4.7])
-    with cols[1]:
-      st.markdown(f"""<div style="border-radius: 5px;"><h4 style="text-align:left; color: white; font-weight: bold;">Default identification and SICR dashboard</h4></div>""", unsafe_allow_html=True)
+  with cols[1]:
+    st.markdown(f"""<div style="border-radius: 5px;"><h4 style="text-align:left; color: white; font-weight: bold;">Default identification and SICR dashboard</h4></div>""", unsafe_allow_html=True)
 
 
 
