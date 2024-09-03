@@ -64,7 +64,7 @@ if upload_raw_file:
   )
   
   # Load the DataFrame into the BigQuery table
-  load_job = client.load_table_from_dataframe(raw_file, table_full_id, job_config=job_config)  # Make an API request.
+  load_job = client.load_table_from_dataframe(raw_file.sort_values('customer_id'), table_full_id, job_config=job_config)  # Make an API request.
 
   with st.spinner('Data is being loaded...'):
     load_job.result()  # Wait for the job to complete.
