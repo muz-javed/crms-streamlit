@@ -17,7 +17,7 @@ st.markdown("""
         background-color: white; 
     }
     .stFileUploader {
-        margin-top: 0px;
+        margin-top: -20px;
         margin-bottom: 0px;
     }
     </style>
