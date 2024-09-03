@@ -20,6 +20,9 @@ st.markdown("""
         margin-top: -20px;
         margin-bottom: 0px;
     }
+    .stSidebar{
+    width: 400px;
+    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -31,7 +34,7 @@ with st.sidebar:
 
     cols = st.columns([0.3,4.7])
     with cols[1]:
-        st.markdown(f"""<div style="border-radius: 5px;"><h4 style="text-align:left; color: white; font-weight: bold;">Default identification and SICR dashboard</h4></div>""", unsafe_allow_html=True)
+        st.markdown(f"""<div style="border-radius: 5px;"><h4 style="text-align:left; color: white; font-weight: bold;">Default Identification and SICR Dashboards</h4></div>""", unsafe_allow_html=True)
 
 
 
