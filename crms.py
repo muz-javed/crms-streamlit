@@ -92,10 +92,10 @@ if upload_raw_file:
     st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white;">Dashboard</h5></div>""", unsafe_allow_html=True)
 
     st.markdown(
-        '<span style="color:white;">The dashboard consists of:</span>'
+        '<span style="color:white; padding-left: 10px;">The dashboard consists of:</span>'
         '<ul>'
-        '<li><span style="color:white;">Page 1 - Summary page.</span></li>'
-        '<li><span style="color:white;">Page 2 - Detailed page.</span></li>'
+        '<li><span style="color:white; padding-left: 10px;">Page 1 - Summary page.</span></li>'
+        '<li><span style="color:white; padding-left: 10px;">Page 2 - Detailed page.</span></li>'
         '</ul>',
         unsafe_allow_html=True
     )
