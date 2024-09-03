@@ -25,7 +25,10 @@ st.markdown("""
     .stApp {
         background-color: black;
     }
-    section[data-testid="stSidebar"] > div:first-child {
+    .stHeader {
+        background-color: black;
+    }
+    .stSidebar
         background-color: #262730;
     }
     </style>
