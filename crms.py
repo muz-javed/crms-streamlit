@@ -25,7 +25,7 @@ st.markdown("""
 
 
 with st.sidebar:
-    cols = st.columns([0.3,3,1.7])
+    cols = st.columns([0.3,2.25,1.7])
     with cols[1]:
         st.image('EY Logo2.PNG')
 
