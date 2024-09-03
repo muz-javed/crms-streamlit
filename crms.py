@@ -31,6 +31,9 @@ st.markdown("""
     section[data-testid="stSidebar"] > div:first-child {
         background-color: #262730;
     }
+    section[data-testid="stHeader"] > div:first-child {
+        background-color: black;
+    }
     </style>
     """, unsafe_allow_html=True)
 
