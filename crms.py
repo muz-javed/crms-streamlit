@@ -34,13 +34,19 @@ with st.sidebar:
     cols = st.columns([0.3,4.7])
     with cols[1]:
         st.markdown(f"""<div style="border-radius: 5px;"><h4 style="text-align:left; color: white; font-weight: bold;">Default Identification and SICR Dashboards</h4></div>""", unsafe_allow_html=True)
-
         st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white; ">Follow the below steps:</h5></div>""", unsafe_allow_html=True)
+
+        df = pd.read_excel('template.xlsx')
+        buffer = BytesIO()
+        df.to_excel(buffer, index=False, engine='xlsxwriter')
+        buffer.seek(0)
+        b64 = base64.b64encode(buffer.read()).decode()
+        href = f'<a href="data:application/octet-stream;base64,{b64}" download="template.xlsx">attached</a>'
         
-        st.markdown("""
+        st.markdown(f"""
         <div style="border-radius: 5px;">
             <h5 style="text-align:left; color: white;">
-                <p style="margin-bottom: 5px; font-size: 13px;">1. Prepare the data as per the template</p>
+                <p style="margin-bottom: 5px; font-size: 13px;">1. Prepare the data as per the {href} template</p>
                 <p style="margin-bottom: 5px; font-size: 13px;">2. Upload the data file</p>
                 <p style="margin-bottom: 5px; font-size: 13px;">3. Visualize the data in the dashboard</p>
             </h5>
@@ -51,23 +57,7 @@ with st.sidebar:
 
         
         
-        df = pd.read_excel('template.xlsx')
         
-        # Create an in-memory buffer
-        buffer = BytesIO()
-        
-        # Save the DataFrame to the buffer as an Excel file
-        df.to_excel(buffer, index=False, engine='xlsxwriter')
-        
-        # Get the content of the buffer and encode it to base64
-        buffer.seek(0)
-        b64 = base64.b64encode(buffer.read()).decode()
-        
-        # Create a download link
-        href = f'<a href="data:application/octet-stream;base64,{b64}" download="template.xlsx">attached</a>'
-        
-        # Display the text with the hyperlink
-        st.markdown(f'Download the {href} file.', unsafe_allow_html=True)
 
 
 
