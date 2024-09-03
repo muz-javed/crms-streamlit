@@ -1,4 +1,3 @@
 [theme]
-
-
-backgroundColor = '#FFFFFF'
+base="dark"
+primaryColor="#774e4e"
