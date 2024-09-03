@@ -32,7 +32,7 @@ st.markdown("""
         background-color: #262730;
     }
     section[data-testid="stHeader"] > div:first-child {
-        background-color: black;
+        background-color: black !important;
     }
     </style>
     """, unsafe_allow_html=True)
