@@ -4,6 +4,8 @@ import streamlit as st
 import langchain
 import openai
 from datetime import datetime
+from google.cloud import bigquery
+from google.oauth2 import service_account
 from openai_functions import bankruptcy_status
 
 st.markdown(f"""<div style="border-radius: 5px;"><h3 style="text-align:left; color: black; font-weight: bold;">Credit Risk Management Standards</h3></div>""", unsafe_allow_html=True)
@@ -32,16 +34,14 @@ if upload_raw_file:
   cols.insert(line_of_business_index + 1, cols.pop(cols.index("default_trigger")))
   raw_file = raw_file[cols]
 
-  st.write(raw_file)
+  # st.write(raw_file)
 
 
 
 
 
 
-  from google.cloud import bigquery
-  from google.oauth2 import service_account
-  import pandas as pd
+
   
   # Path to your service account key file (JSON format)
   key_path = "gen-lang-client-0773467639-eb3bb34e9803.json"
