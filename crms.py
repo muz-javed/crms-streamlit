@@ -14,7 +14,7 @@ st.markdown(f"""<div style="border-radius: 5px;"><h3 style="text-align:left; col
 upload_raw_file = st.file_uploader('Upload Data Files', type = 'xlsx')
 
 if upload_raw_file:
-  raw_file = pd.read_excel(upload_raw_file).head(10)
+  raw_file = pd.read_excel(upload_raw_file).head(20)
 
   with st.spinner('Checking Bankruptcy Status'):
     raw_file = bankruptcy_status(raw_file)
@@ -37,7 +37,7 @@ if upload_raw_file:
   raw_file = raw_file[cols]
 
   # TRANSFORMED FILE #
-  trigger_cols = raw_file.columns[6:]
+  trigger_cols = raw_file.columns[7:]
   final_df = pd.DataFrame(columns = ['customer_id', 'customer_name', 'asset_type', 'line_of_business', 'exposure_amount', 'trigger', 'flag', 'default_trigger'])
   
   for i in range(0, len(raw_file)):
