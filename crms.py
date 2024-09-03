@@ -28,7 +28,7 @@ st.markdown("""
     .stHeader {
         background-color: black;
     }
-    .stSidebar
+    section[data-testid="stSidebar"] > div:first-child {
         background-color: #262730;
     }
     </style>
