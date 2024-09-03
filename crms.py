@@ -17,7 +17,7 @@ with st.sidebar:
   st.write('')
 
 st.markdown(f"""<div style="border-radius: 5px;"><h3 style="text-align:left; color: white; font-weight: bold;">Credit Risk Management Standards</h3></div>""", unsafe_allow_html=True)
-st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white; font-weight: bold;">Upload data files</h5></div>""", unsafe_allow_html=True)
+st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white;">Upload data files</h5></div>""", unsafe_allow_html=True)
 
 upload_raw_file = st.file_uploader('', type = 'xlsx')
 
