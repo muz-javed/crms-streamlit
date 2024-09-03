@@ -4,6 +4,7 @@ import streamlit as st
 import langchain
 import openai
 import base64
+from io import BytesIO
 from datetime import datetime
 from google.cloud import bigquery
 from google.oauth2 import service_account
@@ -48,16 +49,9 @@ with st.sidebar:
 
 
 
-        # import streamlit as st
-        # import pandas as pd
-        import base64
-        from io import BytesIO
         
-        # Sample DataFrame to be downloaded as an Excel file
-        df = pd.DataFrame({
-            'Column1': [1, 2, 3, 4],
-            'Column2': ['A', 'B', 'C', 'D']
-        })
+        
+        df = pd.read_excel('template.xlsx')
         
         # Create an in-memory buffer
         buffer = BytesIO()
