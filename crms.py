@@ -4,7 +4,7 @@ import streamlit as st
 import langchain
 import openai
 from datetime import datetime
-# from openai_functions import bankruptcy_status
+from openai_functions import bankruptcy_status
 
 st.markdown(f"""<div style="border-radius: 5px;"><h3 style="text-align:left; color: black; font-weight: bold;">Credit Risk Management Standards</h3></div>""", unsafe_allow_html=True)
 
