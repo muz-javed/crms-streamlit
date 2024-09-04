@@ -22,18 +22,6 @@ st.markdown("""
         margin-top: -20px;
         margin-bottom: 0px;
     }
-    # .stApp {
-    #     background-color: black;
-    # }
-    # .stHeader {
-    #     background-color: black;
-    # }
-    # section[data-testid="stSidebar"] > div:first-child {
-    #     background-color: #262730;
-    # }
-    # section[data-testid="stHeader"] > div:first-child {
-    #     background-color: black !important;
-    # }
     </style>
     """, unsafe_allow_html=True)
 
@@ -52,7 +40,7 @@ with st.sidebar:
         df.to_excel(buffer, index=False, engine='xlsxwriter')
         buffer.seek(0)
         b64 = base64.b64encode(buffer.read()).decode()
-        href = f'<a href="data:application/octet-stream;base64,{b64}" download="template.xlsx">attached</a>'
+        href = f'<a href="data:application/octet-stream;base64,{b64}" download="template.xlsx" style="text-decoration: none;">attached</a>'
         
         st.markdown(f"""
         <div style="border-radius: 5px;">
@@ -131,4 +119,4 @@ if upload_raw_file:
 
     
     
-    st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://app.powerbi.com/groups/me/reports/5a20d194-6580-44f3-b3ad-859db99fa2cf/9e39d52da42790344bc0?experience=power-bi&bookmarkGuid=3121b084064a018d683b">here</a><span style="color:white;"> to view the dashboard</span>', unsafe_allow_html=True)
+    st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://app.powerbi.com/groups/me/reports/5a20d194-6580-44f3-b3ad-859db99fa2cf/9e39d52da42790344bc0?experience=power-bi&bookmarkGuid=3121b084064a018d683b" style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard</span>', unsafe_allow_html=True)
