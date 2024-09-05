@@ -59,7 +59,7 @@ st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; col
 upload_raw_file = st.file_uploader('', type = 'xlsx')
 
 if upload_raw_file:
-    raw_file = pd.read_excel(upload_raw_file).head(20)
+    raw_file = pd.read_excel(upload_raw_file).head(1)
 
     with st.spinner('Checking Bankruptcy Status'):
         raw_file = bankruptcy_status(raw_file)
@@ -73,7 +73,7 @@ if upload_raw_file:
     # UTP - RAW file #
     raw_file.insert(0, 'added_at', datetime.now())
 
-    raw_file['default_trigger'] = raw_file[raw_file.columns[6:]].sum(axis = 1)
+    raw_file['default_trigger'] = raw_file[raw_file.columns[8:]].sum(axis = 1)
     raw_file.loc[raw_file['default_trigger'] > 1, 'default_trigger'] = 1
 
     cols = raw_file.columns.tolist()
@@ -82,7 +82,7 @@ if upload_raw_file:
     raw_file = raw_file[cols]
 
     # TRANSFORMED FILE #
-    trigger_cols = raw_file.columns[7:]
+    trigger_cols = raw_file.columns[9:]
     final_df = pd.DataFrame(columns = ['customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'asset_type', 'line_of_business', 'exposure_amount', 'trigger', 'flag', 'default_trigger'])
   
     for i in range(0, len(raw_file)):
