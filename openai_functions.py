@@ -46,6 +46,7 @@ prompt = ChatPromptTemplate.from_template(
  
 def bankruptcy_status(df):
     def is_customer_bankrupt(name):
+        st.write(name)
         input_val = f"Is {name} currently bankrupt? Answer with 'Yes' or 'No' at the beginning of your response. If 'Yes', provide specific references such as recent financial statements, news reports, or official filings that indicate the bankruptcy status."
         response = search.run(f"Is {name} bankrupt")
         vectorstore = FAISS.from_texts(
