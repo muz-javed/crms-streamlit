@@ -59,7 +59,7 @@ st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; col
 upload_raw_file = st.file_uploader('', type = 'xlsx')
 
 if upload_raw_file:
-    raw_file = pd.read_excel(upload_raw_file).head(15)
+    raw_file = pd.read_excel(upload_raw_file).head(20)
 
     with st.spinner('Checking Bankruptcy Status'):
         raw_file = bankruptcy_status(raw_file)
@@ -83,11 +83,11 @@ if upload_raw_file:
 
     # TRANSFORMED FILE #
     trigger_cols = raw_file.columns[7:]
-    final_df = pd.DataFrame(columns = ['customer_id', 'customer_name', 'asset_type', 'line_of_business', 'exposure_amount', 'trigger', 'flag', 'default_trigger'])
+    final_df = pd.DataFrame(columns = ['customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'asset_type', 'line_of_business', 'exposure_amount', 'trigger', 'flag', 'default_trigger'])
   
     for i in range(0, len(raw_file)):
         for j in trigger_cols:
-            temp_df_list = [raw_file['customer_id'][i], raw_file['customer_name'][i], raw_file['asset_type'][i], raw_file['line_of_business'][i], raw_file['exposure_amount'][i], j, raw_file[j][i], raw_file['default_trigger'][i]]
+            temp_df_list = [raw_file['customer_id'][i], raw_file['facility_id'][i], raw_file['whole_sale_flag'][i], raw_file['customer_name'][i], raw_file['asset_type'][i], raw_file['line_of_business'][i], raw_file['exposure_amount'][i], j, raw_file[j][i], raw_file['default_trigger'][i]]
             temp_df = pd.DataFrame(temp_df_list).T
             temp_df.columns = final_df.columns
             
