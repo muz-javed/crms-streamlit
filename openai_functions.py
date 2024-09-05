@@ -40,9 +40,7 @@ search = GoogleSearchAPIWrapper()
  
 prompt = ChatPromptTemplate.from_template(
     """Answer the question based only on the context provided.
- 
     Context: {context}
- 
     Question: {question}"""
 )
  
