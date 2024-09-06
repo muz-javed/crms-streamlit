@@ -119,7 +119,7 @@ if upload_raw_file:
                 "Credit facility on a non-accrued status",
                 "Partial facility sale at economic loss",
                 "Bank filed obligor's bankruptcy order",
-                "Obligor's default by another Bank/FI",
+                "Obligor's default by another FI",
                 "Obligor's unwillingness to meet obligations",
                 "Liquidation of collateral due to decline in the obligor's credit worthiness",
                 "Material concessions granted under restructuring terms",
@@ -134,7 +134,7 @@ if upload_raw_file:
                 "A significant deterioration in the value of collateral",
                 "Pending litigation or  regulatory changes with negative impact",
                 "A loss of key staff to obligor's organization",
-                "Material overdraft consistently at/above limits with irregular inflows",
+                "Material overdraft consistently at or above limits with irregular inflows",
                 "External circumstances affecting repayment ability",
                 "DBR Flag"]
 
