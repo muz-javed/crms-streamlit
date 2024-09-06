@@ -46,9 +46,9 @@ def external_bankruptcy_status(name):
     )
     output = output_chain.invoke({"question": input_val})
     if output[0] == "Y":
-        out_val = "Yes"
+        out_val = 1
     else:
-        out_val = "No"
+        out_val = 0
     return out_val
     
 # def bankruptcy_status(df):
