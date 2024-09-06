@@ -119,6 +119,8 @@ if upload_raw_file:
 
     df = df[df['As of Date'] == max_date].reset_index(drop = True)
 
+    df_retail = df.loc[df['Wholesale Flag'] == 1].reset_index(drop = True)
+
 
 
     flag_cols = ["90+ DPD",
@@ -147,21 +149,21 @@ if upload_raw_file:
 
 
 
-    df_final = df[flag_cols]
-    df_final['default_trigger'] = df_final[flag_cols].any(axis=1).astype(int)
-    df_final['customer_id'] = df['Customer ID']
-    df_final['facility_id'] = df['Facility ID']
-    df_final['customer_name'] = df['Customer Name']
-    df_final['facility_id'] = df['Facility ID']
-    df_final['added_at'] = datetime.now()
-    df_final['asset_type'] = df['Asset Type']
-    df_final['line_of_business'] = df['Line of Business']
-    df_final['whole_sale_flag'] = df['Wholesale Flag']
-    df_final['exposure_amount'] = df['Exposure (AED)']
+    df_final_retail = df_retail[flag_cols]
+    df_final_retail['default_trigger'] = df_retail[flag_cols].any(axis=1).astype(int)
+    df_final_retail['customer_id'] = df_retail['Customer ID']
+    df_final_retail['facility_id'] = df_retail['Facility ID']
+    df_final_retail['customer_name'] = df_retail['Customer Name']
+    df_final_retail['facility_id'] = df_retail['Facility ID']
+    df_final_retail['added_at'] = datetime.now()
+    df_final_retail['asset_type'] = df_retail['Asset Type']
+    df_final_retail['line_of_business'] = df_retail['Line of Business']
+    df_final_retail['whole_sale_flag'] = df_retail['Wholesale Flag']
+    df_final_retail['exposure_amount'] = df_retail['Exposure (AED)']
 
     non_flag_cols = ['added_at', 'customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'exposure_amount', 'asset_type', 'line_of_business', 'default_trigger']
     
-    df_final = df_final[non_flag_cols + flag_cols]
+    df_final_retail = df_final_retail[non_flag_cols + flag_cols]
     
     # st.write(df_final)
 
@@ -219,26 +221,26 @@ if upload_raw_file:
 
 
     # TRANSFORMED FILE #
-    trigger_cols = df_final.columns[9:]
-    final_df = pd.DataFrame(columns = ['customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'asset_type', 'line_of_business', 'exposure_amount', 'trigger', 'flag', 'default_trigger'])
+    trigger_cols = df_final_retail.columns[9:]
+    final_df_retail = pd.DataFrame(columns = ['customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'asset_type', 'line_of_business', 'exposure_amount', 'trigger', 'flag', 'default_trigger'])
   
-    for i in range(0, len(df_final)):
+    for i in range(0, len(df_final_retail)):
         for j in trigger_cols:
-            temp_df_list = [df_final['customer_id'][i], df_final['facility_id'][i], df_final['whole_sale_flag'][i], df_final['customer_name'][i], df_final['asset_type'][i], df_final['line_of_business'][i], df_final['exposure_amount'][i], j, df_final[j][i], df_final['default_trigger'][i]]
+            temp_df_list = [df_final_retail['customer_id'][i], df_final_retail['facility_id'][i], df_final_retail['whole_sale_flag'][i], df_final_retail['customer_name'][i], df_final_retail['asset_type'][i], df_final_retail['line_of_business'][i], df_final_retail['exposure_amount'][i], j, df_final_retail[j][i], df_final_retail['default_trigger'][i]]
             temp_df = pd.DataFrame(temp_df_list).T
-            temp_df.columns = final_df.columns
+            temp_df.columns = final_df_retail.columns
             
-            final_df = pd.concat([final_df, temp_df]).reset_index(drop = True)
+            final_df_retail = pd.concat([final_df_retail, temp_df]).reset_index(drop = True)
 
-    final_df['cust_def_flag'] = 'No'
-    final_df.loc[final_df['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
-    final_df.insert(0, 'added_at', datetime.now())
+    final_df_retail['cust_def_flag'] = 'No'
+    final_df_retail.loc[final_df_retail['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
+    final_df_retail.insert(0, 'added_at', datetime.now())
 
     # st.write(final_df)
 
     with st.spinner('Data is being loaded...'):
-        load_df_to_bq(df_final.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
-        load_df_to_bq(final_df, 'crms_dataset', 'utp_transformed')
+        load_df_to_bq(df_final_retail.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
+        load_df_to_bq(final_df_retail, 'crms_dataset', 'utp_transformed')
   
     st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
     
