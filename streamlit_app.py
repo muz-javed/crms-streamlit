@@ -80,7 +80,7 @@ if upload_raw_file:
     df = dbr_flag(df)
     df = litigation_flag(df)
 
-    st.write(df)
+    st.write(df, default_rating)
     
     df = capable_but_unwilling_flag(df, default_rating)
     df = likelihood_of_bankruptcy(df)
