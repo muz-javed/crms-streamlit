@@ -45,6 +45,7 @@ def external_bankruptcy_status(name):
             | StrOutputParser()
     )
     output = output_chain.invoke({"question": input_val})
+    st.write(output)
     if output[0] == "Y":
         out_val = 1
     else:
