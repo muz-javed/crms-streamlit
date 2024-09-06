@@ -109,7 +109,7 @@ if upload_raw_file:
     # df["Bank filed obligor's bankruptcy order"] = 0
     # df.loc[(df['External Bankruptcy Flag'] == 1) | (df['Internal Bankruptcy Flag'] == 1), "Bank filed obligor's bankruptcy order"] = 1
     
-    df['External Bankruptcy Flag'] = df['Customer Name'].apply(external_bankruptcy_status)
+    df = external_bankruptcy_status(df)
     
     # st.write(cust_ext_flag, df)
     
