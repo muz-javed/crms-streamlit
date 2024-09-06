@@ -228,7 +228,7 @@ if upload_raw_file:
             temp_df = pd.DataFrame(temp_df_list).T
             temp_df.columns = final_df_retail.columns
             
-            final_df = pd.concat([final_df, temp_df]).reset_index(drop = True)
+            final_df_retail = pd.concat([final_df_retail, temp_df]).reset_index(drop = True)
 
     final_df_retail['cust_def_flag'] = 'No'
     final_df_retail.loc[final_df['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
