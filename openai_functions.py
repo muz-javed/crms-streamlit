@@ -27,34 +27,78 @@ prompt = ChatPromptTemplate.from_template(
     Context: {context}
     Question: {question}"""
 )
+
+
+def external_bankruptcy_status(df):
+    def is_customer_bankrupt(name):
+        input_val = f"Is {name} currently bankrupt? Answer with 'Yes' or 'No' at the beginning of your response. If 'Yes', provide specific references such as recent financial statements, news reports, or official filings that indicate the bankruptcy status."
+        response = search.run(f"Is {name} bankrupt")
+        vectorstore = FAISS.from_texts(
+            [response], embedding=OpenAIEmbeddings()
+        )
+        output_retriever = vectorstore.as_retriever()
+        output_chain = (
+                RunnablePassthrough.assign(context=(lambda x: x["question"]) | output_retriever)
+                | prompt
+                | chat
+                | StrOutputParser()
+        )
+        output = output_chain.invoke({"question": input_val})
+        if output[0] == "Y":
+            out_val = "Yes"
+        else:
+            out_val = "No"
+        return out_val
+    df['external_bankruptcy_flag'] = df['Customer Name'].apply(is_customer_bankrupt)
+    return df
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
-# def bankruptcy_status(df):
+# # def bankruptcy_status(df):
 
 
-def external_bankruptcy_status(name):
-    input_val = f"Is {name} currently bankrupt? Answer with 'Yes' or 'No' at the beginning of your response. If 'Yes', provide specific references such as recent financial statements, news reports, or official filings that indicate the bankruptcy status."
-    response = search.run(f"Is {name} bankrupt")
-    vectorstore = FAISS.from_texts(
-        [response], embedding=OpenAIEmbeddings(api_key = "sk-svcacct-GKTLsVX_k40dbZcyLsSOm5xxeWofLmuLUa6J9vxhEuL6DT3BlbkFJQFKZyZNQh3pLQeGSd5qsJuRKPBjAxOpZAqzuYV_erZ-AA")
-    )
-    output_retriever = vectorstore.as_retriever()
-    output_chain = (
-            RunnablePassthrough.assign(context=(lambda x: x["question"]) | output_retriever)
-            | prompt
-            | chat
-            | StrOutputParser()
-    )
-    output = output_chain.invoke({"question": input_val})
-    # st.write(output)
-    if output[0] == "Y":
-        out_val = 1
-    else:
-        out_val = 0
-    return out_val
+# def external_bankruptcy_status(name):
+#     input_val = f"Is {name} currently bankrupt? Answer with 'Yes' or 'No' at the beginning of your response. If 'Yes', provide specific references such as recent financial statements, news reports, or official filings that indicate the bankruptcy status."
+#     response = search.run(f"Is {name} bankrupt")
+#     vectorstore = FAISS.from_texts(
+#         [response], embedding=OpenAIEmbeddings(api_key = "sk-svcacct-GKTLsVX_k40dbZcyLsSOm5xxeWofLmuLUa6J9vxhEuL6DT3BlbkFJQFKZyZNQh3pLQeGSd5qsJuRKPBjAxOpZAqzuYV_erZ-AA")
+#     )
+#     output_retriever = vectorstore.as_retriever()
+#     output_chain = (
+#             RunnablePassthrough.assign(context=(lambda x: x["question"]) | output_retriever)
+#             | prompt
+#             | chat
+#             | StrOutputParser()
+#     )
+#     output = output_chain.invoke({"question": input_val})
+#     # st.write(output)
+#     if output[0] == "Y":
+#         out_val = 1
+#     else:
+#         out_val = 0
+#     return out_val
     
-# def bankruptcy_status(df):
+# # def bankruptcy_status(df):
     
-#     df['external_bankruptcy_flag'] = df['Customer Name'].apply(is_customer_bankrupt)
+# #     df['external_bankruptcy_flag'] = df['Customer Name'].apply(is_customer_bankrupt)
 #     return df
 
 
