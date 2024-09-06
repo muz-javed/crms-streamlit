@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import streamlit as sp
+import streamlit as st
 
 # 90 Plus DPD Flag
 def dpd_90_plus_flag(df):
