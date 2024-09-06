@@ -105,8 +105,8 @@ if upload_raw_file:
 
     df['External Bankruptcy Flag'] = 0
     
-    df["Bank filed obligor’s bankruptcy order"] = 0
-    df.loc[(df['External Bankruptcy Flag'] == 1) | (df['Internal Bankruptcy Flag'] == 1), "Bank filed obligor’s bankruptcy order"] = 1
+    df["Bank filed obligor's bankruptcy order"] = 0
+    df.loc[(df['External Bankruptcy Flag'] == 1) | (df['Internal Bankruptcy Flag'] == 1), "Bank filed obligor's bankruptcy order"] = 1
     
   
     # st.write(cust_ext_flag, df)
@@ -117,26 +117,26 @@ if upload_raw_file:
                 "Account-specific provision held ",
                 "Credit facility on a non-accrued status",
                 "Partial facility sale at economic loss",
-                "Bank filed obligor’s bankruptcy order",
+                "Bank filed obligor's bankruptcy order",
                 "Obligor's default by another Bank/FI",
                 "Obligor's unwillingness to meet obligations",
-                "Liquidation of collateral due to decline in the obligor’s credit worthiness",
+                "Liquidation of collateral due to decline in the obligor's credit worthiness",
                 "Material concessions granted under restructuring terms",
-                "Obligor’s owner left UAE without clear rationale, 6+ months",
-                "Obligor’s owner left UAE without clear rationale, 3+ months",
+                "Obligor's owner left UAE without clear rationale, 6+ months",
+                "Obligor's owner left UAE without clear rationale, 3+ months",
                 "Significant deterioration in financial performance",
                 "A high likelihood that the obligor will enter bankruptcy or other material financial reorganization",
                 "Breach of material covenant in Credit facility",
                 "Repeated restructurings due to financial difficulties",
-                "Obligor’s income sources no longer exist or distressed",
+                "Obligor's income sources no longer exist or distressed",
                 "Significant deterioration in operating assets",
                 "Asset-based lending: Assets must generate sufficient cash flow",
                 "A significant deterioration in the value of collateral",
                 "Pending litigation or  regulatory changes with negative impact",
-                "A loss of key staff to the obligor’s organization",
+                "A loss of key staff to the obligor's organization",
                 "Material overdraft consistently at/above limits with irregular inflows",
                 "External circumstances affecting repayment ability",
-                "DBR Fag"]
+                "DBR Flag"]
 
 
     missing_cols = [col for col in flag_cols if col not in df.columns]
