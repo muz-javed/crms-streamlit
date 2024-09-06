@@ -281,7 +281,7 @@ def repeated_restructuring_flag(df, df_assumptions):
     temp_df.rename(columns = {'as_of_date':'As of Date'}, inplace = True)
     
     temp_df['Repeated restructurings due to financial difficulties'] = 0
-    temp_df.loc[temp_df['sum_res_flag'] > restructured_flag_threshold, 'Repeated restructurings due to financial difficulties'] = 1
+    temp_df.loc[temp_df['sum_res_flag'] >= restructured_flag_threshold, 'Repeated restructurings due to financial difficulties'] = 1
     
     df = df.merge(temp_df[['Customer ID', 'As of Date', 'Repeated restructurings due to financial difficulties']], how = 'left', on = ['As of Date', 'Customer ID'])
     df.loc[(df['Repeated restructurings due to financial difficulties'].isna()) | (df['Wholesale Flag'] == 0), 'Repeated restructurings due to financial difficulties'] = 0
