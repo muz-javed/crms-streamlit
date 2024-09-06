@@ -109,7 +109,7 @@ if upload_raw_file:
     df.loc[(df['External Bankruptcy Flag'] == 1) | (df['Internal Bankruptcy Flag'] == 1), "Bank filed obligor’s bankruptcy order"] = 1
     
   
-    st.write(cust_ext_flag, df)
+    st.write(df)
 
 
 
