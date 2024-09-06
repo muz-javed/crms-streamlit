@@ -226,26 +226,26 @@ if upload_raw_file:
 
     st.write(final_df)
 
-    # with st.spinner('Data is being loaded...'):
-    #     load_df_to_bq(raw_file.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
-    #     load_df_to_bq(final_df, 'crms_dataset', 'utp_transformed')
+    with st.spinner('Data is being loaded...'):
+        load_df_to_bq(raw_file.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
+        load_df_to_bq(final_df, 'crms_dataset', 'utp_transformed')
   
-    # st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
+    st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
     
 
     
-    # st.markdown("<hr>", unsafe_allow_html=True)
-    # st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white;">Dashboard</h5></div>""", unsafe_allow_html=True)
+    st.markdown("<hr>", unsafe_allow_html=True)
+    st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white;">Dashboard</h5></div>""", unsafe_allow_html=True)
 
-    # st.markdown(
-    #     '<span style="color:white; padding-left: 10px;">The dashboard consists of:</span>'
-    #     '<ul style="padding-left: 10px;">'
-    #     '<li><span style="color:white; padding-left: 10px;">Page 1 - Summary page.</span></li>'
-    #     '<li><span style="color:white; padding-left: 10px;">Page 2 - Detailed page.</span></li>'
-    #     '</ul>',
-    #     unsafe_allow_html=True
-    # )
+    st.markdown(
+        '<span style="color:white; padding-left: 10px;">The dashboard consists of:</span>'
+        '<ul style="padding-left: 10px;">'
+        '<li><span style="color:white; padding-left: 10px;">Page 1 - Summary page.</span></li>'
+        '<li><span style="color:white; padding-left: 10px;">Page 2 - Detailed page.</span></li>'
+        '</ul>',
+        unsafe_allow_html=True
+    )
 
     
     
-    # st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://app.powerbi.com/groups/me/reports/5a20d194-6580-44f3-b3ad-859db99fa2cf/9e39d52da42790344bc0?experience=power-bi&bookmarkGuid=3121b084064a018d683b" style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard</span>', unsafe_allow_html=True)
+    st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://app.powerbi.com/groups/me/reports/5a20d194-6580-44f3-b3ad-859db99fa2cf/9e39d52da42790344bc0?experience=power-bi&bookmarkGuid=3121b084064a018d683b" style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard</span>', unsafe_allow_html=True)
