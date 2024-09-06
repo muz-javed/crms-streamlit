@@ -83,7 +83,7 @@ if upload_raw_file:
     st.write(df, default_rating)
     
     df = capable_but_unwilling_flag(df, default_rating)
-    df = likelihood_of_bankruptcy(df)
+    df = likelihood_of_bankruptcy(df, default_rating)
     df = economic_loss_flag(df)
 
 
