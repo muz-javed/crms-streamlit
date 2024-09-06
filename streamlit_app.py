@@ -115,6 +115,10 @@ if upload_raw_file:
     
     # st.write(df)
 
+    max_date = max(df['As of Date'])
+
+    df = df[df['As of Date'] == max_date].reset_index(drop = True)
+
 
 
     flag_cols = ["90+ DPD",
@@ -162,9 +166,7 @@ if upload_raw_file:
     # st.write(df_final)
 
 
-    max_date = max(df['As of Date'])
-
-    df_final = df_final[df_final['As of Date'] == max_date].reset_index(drop = True)
+    
 
 
 
