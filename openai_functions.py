@@ -16,7 +16,7 @@ import streamlit as st
 
 import os
 from langchain_google_community import GoogleSearchAPIWrapper
-from langchain_openai import OpenAIEmbeddings
+from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
