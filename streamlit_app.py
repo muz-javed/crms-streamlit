@@ -97,66 +97,66 @@ if upload_raw_file:
     df = cbuae_defaulted(df, df_cb_defaults)
 
     
-    # wholesale_custs = list(set(df[df['Wholesale Flag'] == 1]['Customer Name']))
-    # cust_ext_flag = pd.DataFrame({'Customer Name' : wholesale_custs})
-    # cust_ext_flag['External Bankruptcy Flag'] = cust_ext_flag['Customer Name'].apply(external_bankruptcy_status)
+    wholesale_custs = list(set(df[df['Wholesale Flag'] == 1]['Customer Name']))
+    cust_ext_flag = pd.DataFrame({'Customer Name' : wholesale_custs})
+    cust_ext_flag['External Bankruptcy Flag'] = cust_ext_flag['Customer Name'].apply(external_bankruptcy_status)
 
-    # df = df.merge(cust_ext_flag, how = 'left', on = 'Customer Name')
-    # df.loc[df['External Bankruptcy Flag'].isna(), 'External Bankruptcy Flag'] = 0
+    df = df.merge(cust_ext_flag, how = 'left', on = 'Customer Name')
+    df.loc[df['External Bankruptcy Flag'].isna(), 'External Bankruptcy Flag'] = 0
 
-    df['External Bankruptcy Flag'] = 0
+    # df['External Bankruptcy Flag'] = 0
     
     df["Bank filed obligor's bankruptcy order"] = 0
     df.loc[(df['External Bankruptcy Flag'] == 1) | (df['Internal Bankruptcy Flag'] == 1), "Bank filed obligor's bankruptcy order"] = 1
     
   
-    # st.write(cust_ext_flag, df)
+    st.write(cust_ext_flag, df)
 
 
 
-    flag_cols = ["90+ DPD",
-                "Account-specific provision held",
-                "Credit facility on a non-accrued status",
-                "Partial facility sale at economic loss",
-                "Bank filed obligor's bankruptcy order",
-                "Obligor's default by another FI",
-                "Obligor's unwillingness to meet obligations",
-                "Liquidation of collateral due to decline in the obligor's credit worthiness",
-                "Material concessions granted under restructuring terms",
-                "Obligor's owner left UAE without clear rationale for 6 plus months",
-                "Obligor's owner left UAE without clear rationale for 3 plus months",
-                "Significant deterioration in financial performance",
-                "A high likelihood that the obligor will enter bankruptcy or other material financial reorganization",
-                "Breach of material covenant in Credit facility",
-                "Repeated restructurings due to financial difficulties",
-                "Obligor's income sources no longer exist or distressed",
-                "Significant deterioration in operating assets",
-                "A significant deterioration in the value of collateral",
-                "Pending litigation or  regulatory changes with negative impact",
-                "A loss of key staff to obligor's organization",
-                "Material overdraft consistently at or above limits with irregular inflows",
-                "External circumstances affecting repayment ability",
-                "DBR Flag"]
+    # flag_cols = ["90+ DPD",
+    #             "Account-specific provision held",
+    #             "Credit facility on a non-accrued status",
+    #             "Partial facility sale at economic loss",
+    #             "Bank filed obligor's bankruptcy order",
+    #             "Obligor's default by another FI",
+    #             "Obligor's unwillingness to meet obligations",
+    #             "Liquidation of collateral due to decline in the obligor's credit worthiness",
+    #             "Material concessions granted under restructuring terms",
+    #             "Obligor's owner left UAE without clear rationale for 6 plus months",
+    #             "Obligor's owner left UAE without clear rationale for 3 plus months",
+    #             "Significant deterioration in financial performance",
+    #             "A high likelihood that the obligor will enter bankruptcy or other material financial reorganization",
+    #             "Breach of material covenant in Credit facility",
+    #             "Repeated restructurings due to financial difficulties",
+    #             "Obligor's income sources no longer exist or distressed",
+    #             "Significant deterioration in operating assets",
+    #             "A significant deterioration in the value of collateral",
+    #             "Pending litigation or  regulatory changes with negative impact",
+    #             "A loss of key staff to obligor's organization",
+    #             "Material overdraft consistently at or above limits with irregular inflows",
+    #             "External circumstances affecting repayment ability",
+    #             "DBR Flag"]
 
 
 
-    df_final = df[flag_cols]
-    df_final['default_trigger'] = df_final[flag_cols].any(axis=1).astype(int)
-    df_final['customer_id'] = df['Customer ID']
-    df_final['facility_id'] = df['Facility ID']
-    df_final['customer_name'] = df['Customer Name']
-    df_final['facility_id'] = df['Facility ID']
-    df_final['added_at'] = datetime.now()
-    df_final['asset_type'] = df['Asset Type']
-    df_final['line_of_business'] = df['Line of Business']
-    df_final['whole_sale_flag'] = df['Wholesale Flag']
-    df_final['exposure_amount'] = df['Exposure (AED)']
+    # df_final = df[flag_cols]
+    # df_final['default_trigger'] = df_final[flag_cols].any(axis=1).astype(int)
+    # df_final['customer_id'] = df['Customer ID']
+    # df_final['facility_id'] = df['Facility ID']
+    # df_final['customer_name'] = df['Customer Name']
+    # df_final['facility_id'] = df['Facility ID']
+    # df_final['added_at'] = datetime.now()
+    # df_final['asset_type'] = df['Asset Type']
+    # df_final['line_of_business'] = df['Line of Business']
+    # df_final['whole_sale_flag'] = df['Wholesale Flag']
+    # df_final['exposure_amount'] = df['Exposure (AED)']
 
-    non_flag_cols = ['added_at', 'customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'exposure_amount', 'asset_type', 'line_of_business', 'default_trigger']
+    # non_flag_cols = ['added_at', 'customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'exposure_amount', 'asset_type', 'line_of_business', 'default_trigger']
     
-    df_final = df_final[non_flag_cols + flag_cols]
+    # df_final = df_final[non_flag_cols + flag_cols]
     
-    # st.write(df_final)
+    # # st.write(df_final)
 
 
 
@@ -191,61 +191,61 @@ if upload_raw_file:
 
 
 
-    # ### CONVERT TO THE POWER-BI FORMAT ###
-    # # UTP - RAW file #
-    # raw_file.insert(0, 'added_at', datetime.now())
+    # # ### CONVERT TO THE POWER-BI FORMAT ###
+    # # # UTP - RAW file #
+    # # raw_file.insert(0, 'added_at', datetime.now())
 
-    # raw_file['default_trigger'] = raw_file[raw_file.columns[8:]].sum(axis = 1)
-    # raw_file.loc[raw_file['default_trigger'] > 1, 'default_trigger'] = 1
+    # # raw_file['default_trigger'] = raw_file[raw_file.columns[8:]].sum(axis = 1)
+    # # raw_file.loc[raw_file['default_trigger'] > 1, 'default_trigger'] = 1
 
-    # cols = raw_file.columns.tolist()
-    # line_of_business_index = cols.index('line_of_business')
-    # cols.insert(line_of_business_index + 1, cols.pop(cols.index("default_trigger")))
-    # raw_file = raw_file[cols]
-
-
+    # # cols = raw_file.columns.tolist()
+    # # line_of_business_index = cols.index('line_of_business')
+    # # cols.insert(line_of_business_index + 1, cols.pop(cols.index("default_trigger")))
+    # # raw_file = raw_file[cols]
 
 
 
 
-    # TRANSFORMED FILE #
-    trigger_cols = df_final.columns[9:]
-    final_df = pd.DataFrame(columns = ['customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'asset_type', 'line_of_business', 'exposure_amount', 'trigger', 'flag', 'default_trigger'])
+
+
+    # # TRANSFORMED FILE #
+    # trigger_cols = df_final.columns[9:]
+    # final_df = pd.DataFrame(columns = ['customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'asset_type', 'line_of_business', 'exposure_amount', 'trigger', 'flag', 'default_trigger'])
   
-    for i in range(0, len(df_final)):
-        for j in trigger_cols:
-            temp_df_list = [df_final['customer_id'][i], df_final['facility_id'][i], df_final['whole_sale_flag'][i], df_final['customer_name'][i], df_final['asset_type'][i], df_final['line_of_business'][i], df_final['exposure_amount'][i], j, df_final[j][i], df_final['default_trigger'][i]]
-            temp_df = pd.DataFrame(temp_df_list).T
-            temp_df.columns = final_df.columns
+    # for i in range(0, len(df_final)):
+    #     for j in trigger_cols:
+    #         temp_df_list = [df_final['customer_id'][i], df_final['facility_id'][i], df_final['whole_sale_flag'][i], df_final['customer_name'][i], df_final['asset_type'][i], df_final['line_of_business'][i], df_final['exposure_amount'][i], j, df_final[j][i], df_final['default_trigger'][i]]
+    #         temp_df = pd.DataFrame(temp_df_list).T
+    #         temp_df.columns = final_df.columns
             
-            final_df = pd.concat([final_df, temp_df]).reset_index(drop = True)
+    #         final_df = pd.concat([final_df, temp_df]).reset_index(drop = True)
 
-    final_df['cust_def_flag'] = 'No'
-    final_df.loc[final_df['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
-    final_df.insert(0, 'added_at', datetime.now())
+    # final_df['cust_def_flag'] = 'No'
+    # final_df.loc[final_df['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
+    # final_df.insert(0, 'added_at', datetime.now())
 
-    # st.write(final_df)
+    # # st.write(final_df)
 
-    with st.spinner('Data is being loaded...'):
-        load_df_to_bq(df_final.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
-        load_df_to_bq(final_df, 'crms_dataset', 'utp_transformed')
+    # with st.spinner('Data is being loaded...'):
+    #     load_df_to_bq(df_final.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
+    #     load_df_to_bq(final_df, 'crms_dataset', 'utp_transformed')
   
-    st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
+    # st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
     
 
     
-    st.markdown("<hr>", unsafe_allow_html=True)
-    st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white;">Dashboard</h5></div>""", unsafe_allow_html=True)
+    # st.markdown("<hr>", unsafe_allow_html=True)
+    # st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white;">Dashboard</h5></div>""", unsafe_allow_html=True)
 
-    st.markdown(
-        '<span style="color:white; padding-left: 10px;">The dashboard consists of:</span>'
-        '<ul style="padding-left: 10px;">'
-        '<li><span style="color:white; padding-left: 10px;">Page 1 - Summary page.</span></li>'
-        '<li><span style="color:white; padding-left: 10px;">Page 2 - Detailed page.</span></li>'
-        '</ul>',
-        unsafe_allow_html=True
-    )
+    # st.markdown(
+    #     '<span style="color:white; padding-left: 10px;">The dashboard consists of:</span>'
+    #     '<ul style="padding-left: 10px;">'
+    #     '<li><span style="color:white; padding-left: 10px;">Page 1 - Summary page.</span></li>'
+    #     '<li><span style="color:white; padding-left: 10px;">Page 2 - Detailed page.</span></li>'
+    #     '</ul>',
+    #     unsafe_allow_html=True
+    # )
 
     
     
-    st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://app.powerbi.com/groups/me/reports/5a20d194-6580-44f3-b3ad-859db99fa2cf/9e39d52da42790344bc0?experience=power-bi&bookmarkGuid=3121b084064a018d683b" style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard</span>', unsafe_allow_html=True)
+    # st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://app.powerbi.com/groups/me/reports/5a20d194-6580-44f3-b3ad-859db99fa2cf/9e39d52da42790344bc0?experience=power-bi&bookmarkGuid=3121b084064a018d683b" style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard</span>', unsafe_allow_html=True)
