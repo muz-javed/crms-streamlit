@@ -75,7 +75,6 @@ if upload_raw_file:
     df = specific_provision_held(df)
     df = non_accrued_status(df)
     df = dbr_flag(df)
-    df = default_with_external_lfi(df)
     df = litigation_flag(df)
 
 
