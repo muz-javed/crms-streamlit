@@ -156,7 +156,7 @@ if upload_raw_file:
     
     df_final = df_final[non_flag_cols + flag_cols]
     
-    st.write(df_final)
+    # st.write(df_final)
 
 
 
@@ -224,7 +224,7 @@ if upload_raw_file:
     final_df.loc[final_df['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
     final_df.insert(0, 'added_at', datetime.now())
 
-    st.write(final_df)
+    # st.write(final_df)
 
     with st.spinner('Data is being loaded...'):
         load_df_to_bq(df_final.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
