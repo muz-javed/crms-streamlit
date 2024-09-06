@@ -40,10 +40,6 @@ def litigation_flag(df):
 
     return df
 
-
-
-
-
 # Loss of key staff flag
 def loss_of_key_staff(df):
     df['A loss of key staff to the obligor’s organization'] = 0
@@ -52,7 +48,7 @@ def loss_of_key_staff(df):
     return df
 
 # Capable but unwilling to pay
-def capable_but_unwilling_flag(df):
+def capable_but_unwilling_flag(df, default_rating):
     df["Obligor's unwillingness to meet obligations"] = 0
     df.loc[(~df['Internal Rating'].isin(default_rating)) & (df['Unwillingness to Pay Flag']) == 1, "Obligor's unwillingness to meet obligations"] = 1
 
