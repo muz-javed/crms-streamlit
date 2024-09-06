@@ -224,8 +224,8 @@ def material_overdraft_flag(df):
 
     df['material_overdraft_val'] = df['Exposure (AED)']/df['Facility Limit']
 
-    df['Material overdraft consistently at/above limits with irregular inflows'] = 0
-    df.loc[df['material_overdraft_val'] > 1.05, 'Material overdraft consistently at/above limits with irregular inflows'] = 1
+    df['Material overdraft consistently at or above limits with irregular inflows'] = 0
+    df.loc[df['material_overdraft_val'] > 1.05, 'Material overdraft consistently at or above limits with irregular inflows'] = 1
 
     return df
 
@@ -315,8 +315,8 @@ def repeated_restructuring_flag(df, df_assumptions):
 def cbuae_defaulted(df, df_cb_defaults):
 
     def_custs_list = list(df_cb_defaults[df_cb_defaults['Default Status'] == 1]['Customer Name'])
-    df["Obligor's default by another Bank/FI"] = 0
-    df.loc[df['Customer Name'].isin(def_custs_list), "Obligor's default by another Bank/FI"] = 1
+    df["Obligor's default by another FI"] = 0
+    df.loc[df['Customer Name'].isin(def_custs_list), "Obligor's default by another FI"] = 1
 
     return df
 
