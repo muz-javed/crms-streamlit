@@ -131,7 +131,6 @@ if upload_raw_file:
                 "Repeated restructurings due to financial difficulties",
                 "Obligor's income sources no longer exist or distressed",
                 "Significant deterioration in operating assets",
-                "Asset-based lending: Assets must generate sufficient cash flow",
                 "A significant deterioration in the value of collateral",
                 "Pending litigation or  regulatory changes with negative impact",
                 "A loss of key staff to obligor's organization",
@@ -140,19 +139,7 @@ if upload_raw_file:
                 "DBR Flag"]
 
 
-    missing_cols = [col for col in flag_cols if col not in df.columns]
-
-    # If there are missing columns, print a warning
-    if missing_cols:
-        st.write(f"Warning: The following columns are missing from the dataframe: {missing_cols}")
-    
-    # # Filter only the columns that are present in the dataframe
-    # available_flag_cols = [col for col in flag_cols if col in df.columns]
-    
-    # # Display the available columns
-    # st.write(df[available_flag_cols])
-
-    # st.write(df[flag_cols])
+    st.write(df[flag_cols])
 
 
 
