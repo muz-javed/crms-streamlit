@@ -96,20 +96,20 @@ if upload_raw_file:
     df = cbuae_defaulted(df, df_cb_defaults)
 
     
-    # wholesale_custs = list(set(df[df['Wholesale Flag'] == 1]['Customer Name']))
-    # cust_ext_flag = pd.DataFrame({'Customer Name' : wholesale_custs})
-    # cust_ext_flag['External Bankruptcy Flag'] = cust_ext_flag['Customer Name'].apply(external_bankruptcy_status)
+    wholesale_custs = list(set(df[df['Wholesale Flag'] == 1]['Customer Name']))
+    cust_ext_flag = pd.DataFrame({'Customer Name' : wholesale_custs})
+    cust_ext_flag['External Bankruptcy Flag'] = cust_ext_flag['Customer Name'].apply(external_bankruptcy_status)
 
-    # df = df.merge(cust_ext_flag, how = 'left', on = 'Customer Name')
-    # df.loc[df['External Bankruptcy Flag'].isna(), 'External Bankruptcy Flag'] = 0
+    df = df.merge(cust_ext_flag, how = 'left', on = 'Customer Name')
+    df.loc[df['External Bankruptcy Flag'].isna(), 'External Bankruptcy Flag'] = 0
 
-    df['External Bankruptcy Flag'] = 0
+    # df['External Bankruptcy Flag'] = 0
     
     df["Bank filed obligor’s bankruptcy order"] = 0
     df.loc[(df['External Bankruptcy Flag'] == 1) | (df['Internal Bankruptcy Flag'] == 1), "Bank filed obligor’s bankruptcy order"] = 1
     
   
-    st.write(df)
+    st.write(cust_ext_flag, df)
 
 
 
