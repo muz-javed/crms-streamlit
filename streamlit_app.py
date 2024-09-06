@@ -68,11 +68,10 @@ if upload_raw_file:
     df_pre_restructure = pd.read_excel(upload_raw_file, sheet_name = 'Pre-Restructures')
     df_income_source = pd.read_excel(upload_raw_file, sheet_name = 'Income Source')
     df_login_history = pd.read_excel(upload_raw_file, sheet_name = 'User Login History')
+    df_cb_defaults = pd.read_excel(upload_raw_file, sheet_name = 'CBUAE defaults list')
 
     st.session_state.discount_rate = df_assumptions['Discount Rate'].iloc[0]
     default_rating = list(df_assumptions['Default Internal Ratings'])
-
-
 
     df = dpd_90_plus_flag(df)
     df = specific_provision_held(df)
@@ -94,6 +93,7 @@ if upload_raw_file:
     df = obligor_not_in_uae_6m(df, df_login_history)
     df = obligor_not_in_uae_3m(df, df_login_history)
     df = repeated_restructuring_flag(df, df_assumptions)
+    df = cbuae_defaulted(df, df_cb_defaults)
 
 
 
