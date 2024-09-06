@@ -57,8 +57,8 @@ def litigation_flag(df):
 
 # Loss of key staff flag
 def loss_of_key_staff(df):
-    df["A loss of key staff"] = 0
-    df.loc[(df['Key staff loss flag'] == 1)  & (df['Wholesale Flag'] == 1), "A loss of key staff"] = 1
+    df["A loss of key staff to obligor's organization"] = 0
+    df.loc[(df['Key staff loss flag'] == 1)  & (df['Wholesale Flag'] == 1), "A loss of key staff to obligor's organization"] = 1
 
     return df
 
