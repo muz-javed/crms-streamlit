@@ -259,7 +259,7 @@ if upload_raw_file:
     st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://app.powerbi.com/groups/me/reports/c413dfa6-68f7-4720-9d64-d9cab2590fed?pbi_source=desktop" style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard.</span>', unsafe_allow_html=True)
 
     buffer = BytesIO()
-    df.to_excel(buffer, index=False, engine='xlsxwriter')
+    df_final.to_excel(buffer, index=False, engine='xlsxwriter')
     buffer.seek(0)
     b64 = base64.b64encode(buffer.read()).decode()
     href = f'<a href="data:application/octet-stream;base64,{b64}" download="Raw Data.xlsx" style="text-decoration: none;">here</a>'
