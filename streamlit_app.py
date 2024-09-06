@@ -231,7 +231,7 @@ if upload_raw_file:
             final_df_retail = pd.concat([final_df_retail, temp_df]).reset_index(drop = True)
 
     final_df_retail['cust_def_flag'] = 'No'
-    final_df_retail.loc[final_df['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
+    final_df_retail.loc[final_df_retail['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
     final_df_retail.insert(0, 'added_at', datetime.now())
 
     # st.write(final_df)
