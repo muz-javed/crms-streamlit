@@ -28,16 +28,23 @@ def non_accrued_status(df):
     return df
 
 # Covenant Breach Flag
-def non_accrued_status(df):
+def covenant_breach_flag(df):
     df['Breach of material covenant in Credit facility'] = 0
-    df.loc[df['Covenant Breach Flag'] == 1, 'Breach of material covenant in Credit facility'] = 1
+    df.loc[(df['Covenant Breach Flag'] == 1) & (df['Wholesale Flag'] == 1), 'Breach of material covenant in Credit facility'] = 1
+
+    return df
+
+# External circumstances affecting repayment ability
+def bank_flag(df):
+    df['External circumstances affecting repayment ability'] = 0
+    df.loc[df['Bank Flag'] == 1, 'External circumstances affecting repayment ability'] = 1
 
     return df
 
 # DBR Flag
 def dbr_flag(df):
     df['DBR Flag'] = 0
-    df.loc[(df['DBR Flag'] == 1) & (df['Wholesale Flag'] == 1), 'DBR Flag'] = 1
+    df.loc[(df['DBR Flag'] == 1) & (df['Wholesale Flag'] == 0), 'DBR Flag'] = 1
 
     return df
 
@@ -51,7 +58,7 @@ def litigation_flag(df):
 # Loss of key staff flag
 def loss_of_key_staff(df):
     df['A loss of key staff to the obligor’s organization'] = 0
-    df.loc[df['Key staff loss flag'] == 1, 'A loss of key staff to the obligor’s organization'] = 1
+    df.loc[(df['Key staff loss flag'] == 1)  & (df['Wholesale Flag'] == 1), 'A loss of key staff to the obligor’s organization'] = 1
 
     return df
 
@@ -188,6 +195,16 @@ def financial_deterioration_flag(df, df_assumptions):
     
     df['Significant deterioration in financial performance'] = 0
     df.loc[((df['Current Ratio'] < current_ratio) | (df['Quick Ratio'] < quick_ratio) | (df['Leverage Ratio'] > leverage_ratio)) & (df['Wholesale Flag'] == 1), 'Significant deterioration in financial performance'] = 1
+
+    return df
+
+
+# Operating assets Degradation flag
+def operating_assets_degradation_flag(df):
+    
+    df['Significant deterioration in operating assets'] = 0
+    df.loc[((df['Current Ratio'] < 1) | (df['Current Ratio'] > 2)) & (df['Wholesale Flag'] == 1), 'Significant deterioration in operating assets
+'] = 1
 
     return df
 
