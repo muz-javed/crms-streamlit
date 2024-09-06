@@ -162,6 +162,11 @@ if upload_raw_file:
     # st.write(df_final)
 
 
+    max_date = max(df['As of Date'])
+
+    df_final = df_final[df_final['As of Date'] == max_date].reset_index(drop = True)
+
+
 
 
 
@@ -249,4 +254,4 @@ if upload_raw_file:
 
     
     
-    st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://app.powerbi.com/groups/me/reports/5a20d194-6580-44f3-b3ad-859db99fa2cf/9e39d52da42790344bc0?experience=power-bi&bookmarkGuid=3121b084064a018d683b" style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard</span>', unsafe_allow_html=True)
+    st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://app.powerbi.com/groups/me/reports/c413dfa6-68f7-4720-9d64-d9cab2590fed?pbi_source=desktop" style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard</span>', unsafe_allow_html=True)
