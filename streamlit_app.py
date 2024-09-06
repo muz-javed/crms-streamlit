@@ -104,7 +104,7 @@ if upload_raw_file:
     # df = df.merge(cust_ext_flag, how = 'left', on = 'Customer Name')
     # df.loc[df['External Bankruptcy Flag'].isna(), 'External Bankruptcy Flag'] = 0
 
-    # df['External Bankruptcy Flag'] = 0
+    df['External Bankruptcy Flag'] = 0
     
     df["Bank filed obligor's bankruptcy order"] = 0
     df.loc[(df['External Bankruptcy Flag'] == 1) | (df['Internal Bankruptcy Flag'] == 1), "Bank filed obligor's bankruptcy order"] = 1
