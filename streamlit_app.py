@@ -76,7 +76,9 @@ if upload_raw_file:
     df = non_accrued_status(df)
     df = dbr_flag(df)
     df = litigation_flag(df)
-
+    df = capable_but_unwilling_flag(df)
+    df = likelihood_of_bankruptcy(df)
+    df = economic_loss_flag(df)
 
 
 
