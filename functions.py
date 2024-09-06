@@ -256,7 +256,7 @@ def obligor_not_in_uae_3m(df, df_login_history):
     current_date = max(df_login_history['Date'])
     three_m_back_date = current_date - pd.DateOffset(days=90)
     
-    three_m_back_date = df_login_history[df_login_history['Date'] >= six_m_back_date].reset_index(drop = True)
+    three_m_back_date = df_login_history[df_login_history['Date'] >= three_m_back_date].reset_index(drop = True)
     three_m_back_date["Obligor’s owner left UAE without clear rationale, 3+ months"] = three_m_back_date['Login Location'].apply(lambda x: 1 if x == 'Outside UAE' else 0)
     three_m_back_date = three_m_back_date.groupby('Customer ID').agg({"Obligor’s owner left UAE without clear rationale, 3+ months": 'max'}).reset_index()
     three_m_back_date['As of Date'] = current_date
