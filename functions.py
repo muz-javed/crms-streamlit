@@ -75,7 +75,7 @@ def get_npv_value(df, df_assumptions):
 def bullet_payments(df):
 
     df['years_to_maturity'] = ((df['Facility End Date'] - df['As of Date']).dt.days)/365
-    df['NPV'] = df['Exposure (AED)']/((1 + discount_rate) ** df['years_to_maturity'])
+    df['NPV'] = df['Exposure (AED)']/((1 + st.session_state.discount_rate) ** df['years_to_maturity'])
 
     return df
 
@@ -108,7 +108,7 @@ def straight_line_calcs(row):
     payments['Exposure (AED)'] = row['Exposure (AED)']/len(payments)
 
     payments['years_to_maturity'] = ((payments['Date'] - payments['As of Date']).dt.days)/365
-    payments['NPV'] = payments['Exposure (AED)']/((1 + discount_rate) ** payments['years_to_maturity'])
+    payments['NPV'] = payments['Exposure (AED)']/((1 + st.session_state.discount_rate) ** payments['years_to_maturity'])
     
     npv = payments['NPV'].sum()
 
