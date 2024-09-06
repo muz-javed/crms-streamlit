@@ -69,7 +69,7 @@ if upload_raw_file:
     df_income_source = pd.read_excel(upload_raw_file, sheet_name = 'Income Source')
     df_login_history = pd.read_excel(upload_raw_file, sheet_name = 'User Login History')
 
-    discount_rate = df_assumptions['Discount Rate'].iloc[0]
+    st.session_state.discount_rate = df_assumptions['Discount Rate'].iloc[0]
     default_rating = list(df_assumptions['Default Internal Ratings'])
 
 
