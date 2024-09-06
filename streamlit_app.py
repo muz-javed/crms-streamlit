@@ -114,7 +114,7 @@ if upload_raw_file:
 
 
     flag_cols = ["90+ DPD",
-                "Account-specific provision held ",
+                "Account-specific provision held",
                 "Credit facility on a non-accrued status",
                 "Partial facility sale at economic loss",
                 "Bank filed obligor's bankruptcy order",
