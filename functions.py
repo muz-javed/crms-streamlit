@@ -264,12 +264,12 @@ def obligor_not_in_uae_6m(df, df_login_history):
     six_m_back_date = current_date - pd.DateOffset(days=180)
     
     six_m_df = df_login_history[df_login_history['Date'] >= six_m_back_date].reset_index(drop = True)
-    six_m_df["Obligor's owner left UAE without clear rationale, 6+ months"] = six_m_df['Login Location'].apply(lambda x: 1 if x == 'Outside UAE' else 0)
-    six_m_df = six_m_df.groupby('Customer ID').agg({"Obligor's owner left UAE without clear rationale, 6+ months": 'max'}).reset_index()
+    six_m_df["Obligor's owner left UAE without clear rationale for 6 plus months"] = six_m_df['Login Location'].apply(lambda x: 1 if x == 'Outside UAE' else 0)
+    six_m_df = six_m_df.groupby('Customer ID').agg({"Obligor's owner left UAE without clear rationale for 6 plus months": 'max'}).reset_index()
     six_m_df['As of Date'] = current_date
     
     df = df.merge(six_m_df, how = 'left', on = ['As of Date', 'Customer ID'])
-    df.loc[(df["Obligor's owner left UAE without clear rationale, 6+ months"].isna()) | (df['Wholesale Flag'] == 0), "Obligor's owner left UAE without clear rationale, 6+ months"] = 0
+    df.loc[(df["Obligor's owner left UAE without clear rationale for 6 plus months"].isna()) | (df['Wholesale Flag'] == 0), "Obligor's owner left UAE without clear rationale for 6 plus months"] = 0
 
     return df
 
@@ -280,12 +280,12 @@ def obligor_not_in_uae_3m(df, df_login_history):
     three_m_back_date = current_date - pd.DateOffset(days=90)
     
     three_m_back_date = df_login_history[df_login_history['Date'] >= three_m_back_date].reset_index(drop = True)
-    three_m_back_date["Obligor's owner left UAE without clear rationale, 3+ months"] = three_m_back_date['Login Location'].apply(lambda x: 1 if x == 'Outside UAE' else 0)
-    three_m_back_date = three_m_back_date.groupby('Customer ID').agg({"Obligor's owner left UAE without clear rationale, 3+ months": 'max'}).reset_index()
+    three_m_back_date["Obligor's owner left UAE without clear rationale for 3 plus months"] = three_m_back_date['Login Location'].apply(lambda x: 1 if x == 'Outside UAE' else 0)
+    three_m_back_date = three_m_back_date.groupby('Customer ID').agg({"Obligor's owner left UAE without clear rationale for 3 plus months": 'max'}).reset_index()
     three_m_back_date['As of Date'] = current_date
     
     df = df.merge(three_m_back_date, how = 'left', on = ['As of Date', 'Customer ID'])
-    df.loc[(df["Obligor's owner left UAE without clear rationale, 3+ months"].isna()) | (df['Wholesale Flag'] == 1), "Obligor's owner left UAE without clear rationale, 3+ months"] = 0
+    df.loc[(df["Obligor's owner left UAE without clear rationale for 3 plus months"].isna()) | (df['Wholesale Flag'] == 1), "Obligor's owner left UAE without clear rationale for 3 plus months"] = 0
 
     return df
 
