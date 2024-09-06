@@ -203,21 +203,28 @@ if upload_raw_file:
     # cols.insert(line_of_business_index + 1, cols.pop(cols.index("default_trigger")))
     # raw_file = raw_file[cols]
 
-    # # TRANSFORMED FILE #
-    # trigger_cols = raw_file.columns[9:]
-    # final_df = pd.DataFrame(columns = ['customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'asset_type', 'line_of_business', 'exposure_amount', 'trigger', 'flag', 'default_trigger'])
-  
-    # for i in range(0, len(raw_file)):
-    #     for j in trigger_cols:
-    #         temp_df_list = [raw_file['customer_id'][i], raw_file['facility_id'][i], raw_file['whole_sale_flag'][i], raw_file['customer_name'][i], raw_file['asset_type'][i], raw_file['line_of_business'][i], raw_file['exposure_amount'][i], j, raw_file[j][i], raw_file['default_trigger'][i]]
-    #         temp_df = pd.DataFrame(temp_df_list).T
-    #         temp_df.columns = final_df.columns
-            
-    #         final_df = pd.concat([final_df, temp_df]).reset_index(drop = True)
 
-    # final_df['cust_def_flag'] = 'No'
-    # final_df.loc[final_df['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
-    # final_df.insert(0, 'added_at', datetime.now())
+
+
+
+
+    # TRANSFORMED FILE #
+    trigger_cols = df_final.columns[9:]
+    final_df = pd.DataFrame(columns = ['customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'asset_type', 'line_of_business', 'exposure_amount', 'trigger', 'flag', 'default_trigger'])
+  
+    for i in range(0, len(raw_file)):
+        for j in trigger_cols:
+            temp_df_list = [df_final['customer_id'][i], df_final['facility_id'][i], df_final['whole_sale_flag'][i], df_final['customer_name'][i], df_final['asset_type'][i], df_final['line_of_business'][i], df_final['exposure_amount'][i], j, df_final[j][i], df_final['default_trigger'][i]]
+            temp_df = pd.DataFrame(temp_df_list).T
+            temp_df.columns = final_df.columns
+            
+            final_df = pd.concat([final_df, temp_df]).reset_index(drop = True)
+
+    final_df['cust_def_flag'] = 'No'
+    final_df.loc[final_df['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
+    final_df.insert(0, 'added_at', datetime.now())
+
+    st.write(final_df)
 
     # with st.spinner('Data is being loaded...'):
     #     load_df_to_bq(raw_file.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
