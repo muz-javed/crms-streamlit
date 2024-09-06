@@ -203,8 +203,7 @@ def financial_deterioration_flag(df, df_assumptions):
 def operating_assets_degradation_flag(df):
     
     df['Significant deterioration in operating assets'] = 0
-    df.loc[((df['Current Ratio'] < 1) | (df['Current Ratio'] > 2)) & (df['Wholesale Flag'] == 1), 'Significant deterioration in operating assets
-'] = 1
+    df.loc[((df['Current Ratio'] < 1) | (df['Current Ratio'] > 2)) & (df['Wholesale Flag'] == 1), 'Significant deterioration in operating assets'] = 1
 
     return df
 
