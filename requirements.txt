@@ -14,3 +14,5 @@ requests
 google-cloud-bigquery
 xlsxwriter
 langchain-google-community
+faiss-gpu
+faiss-cpu
