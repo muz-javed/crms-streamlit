@@ -168,25 +168,6 @@ if upload_raw_file:
 
    
 
-    df_d =  df_final.loc[df_final['whole_sale_flag'] == 1].reset_index(drop = True)
-    buffer = BytesIO()
-    df_d.to_excel(buffer, index=False, engine='xlsxwriter')
-    buffer.seek(0)
-    b64 = base64.b64encode(buffer.read()).decode()
-    href = f'<a href="data:application/octet-stream;base64,{b64}" download="Wholesale Custs.xlsx" style="text-decoration: none;">attached</a>'
-    
-    st.markdown(f"""
-    <div style="border-radius: 5px;">
-        <h5 style="text-align:left; color: white;">
-            <p style="margin-bottom: 5px; font-size: 13px;">1. Prepare the data as per the {href} template</p>
-            <p style="margin-bottom: 5px; font-size: 13px;">2. Upload the data file</p>
-            <p style="margin-bottom: 5px; font-size: 13px;">3. Visualize the data in the dashboard</p>
-        </h5>
-    </div>
-    """, unsafe_allow_html=True)
-
-
-    
 
 
 
