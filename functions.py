@@ -116,7 +116,7 @@ def straight_line_calcs(row):
 
 
 # Economic Loss Flag
-def economic_loss_flag(df):
+def economic_loss_flag(df, df_assumptions):
 
     df = get_npv_value(df, df_assumptions)
     df['sale_price_loss'] = 1 - (df['Sale Price of Facility (if applicable)']/df[['Exposure (AED)', 'NPV']].max(axis = 1))
