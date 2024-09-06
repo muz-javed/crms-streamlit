@@ -133,7 +133,7 @@ if upload_raw_file:
                 "Asset-based lending: Assets must generate sufficient cash flow",
                 "A significant deterioration in the value of collateral",
                 "Pending litigation or  regulatory changes with negative impact",
-                "A loss of key staff to the obligor's organization",
+                "A loss of key staff",
                 "Material overdraft consistently at/above limits with irregular inflows",
                 "External circumstances affecting repayment ability",
                 "DBR Flag"]
