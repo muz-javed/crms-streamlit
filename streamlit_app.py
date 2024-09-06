@@ -8,7 +8,7 @@ from io import BytesIO
 from datetime import datetime
 from google.cloud import bigquery 
 from google.oauth2 import service_account
-# from openai_functions import external_bankruptcy_status
+from openai_functions import external_bankruptcy_status
 # from dataframe_functions import load_df_to_bq
 
 
