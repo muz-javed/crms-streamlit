@@ -163,7 +163,7 @@ if upload_raw_file:
     
     # st.write(df_final)
 
-    df_final_retail = df_final.loc[df_final['whole_sale_flag'] == 1].reset_index(drop = True)
+    df_final_retail = df_final.loc[df_final['whole_sale_flag'] == 0].reset_index(drop = True)
 
 
     
