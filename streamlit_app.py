@@ -139,7 +139,9 @@ if upload_raw_file:
                 "DBR Flag"]
 
 
-    st.write(df[flag_cols])
+    df['default_trigger'] = df[flag_cols].any(axis=1).astype(int)
+    
+    st.write(df[['default_trigger'] + flag_cols])
 
 
 
