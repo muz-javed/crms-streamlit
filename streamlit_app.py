@@ -77,6 +77,7 @@ if upload_raw_file:
     df = specific_provision_held(df)
     df = non_accrued_status(df)
     df = covenant_breach_flag(df)
+    df = loss_of_key_staff(df)
     df = bank_flag(df)
     df = dbr_flag(df)
     df = litigation_flag(df)
@@ -133,7 +134,7 @@ if upload_raw_file:
                 "Asset-based lending: Assets must generate sufficient cash flow",
                 "A significant deterioration in the value of collateral",
                 "Pending litigation or  regulatory changes with negative impact",
-                "A loss of key staff",
+                "A loss of key staff to obligor's organization",
                 "Material overdraft consistently at/above limits with irregular inflows",
                 "External circumstances affecting repayment ability",
                 "DBR Flag"]
