@@ -311,7 +311,14 @@ def repeated_restructuring_flag(df, df_assumptions):
     
     return df
 
+# Obligor's default by another Bank/FI
+def cbuae_defaulted(df, df_cb_defaults):
 
+    def_custs_list = list(df_cb_defaults[df_cb_defaults['Default Status'] == 1]['Customer Name'])
+    df["Obligor's default by another Bank/FI"] = 0
+    df.loc[df['Customer Name'].isin(def_custs_list), "Obligor's default by another Bank/FI"] = 1
+
+    return df
 
 
 
