@@ -11,6 +11,7 @@ from google.oauth2 import service_account
 from openai_functions import external_bankruptcy_status
 from dataframe_functions import load_df_to_bq
 
+
 from functions import *
 
 st.markdown("""
@@ -95,11 +96,7 @@ if upload_raw_file:
     df = repeated_restructuring_flag(df, df_assumptions)
     df = cbuae_defaulted(df, df_cb_defaults)
 
-
-
     
-    # raw_file = bankruptcy_status(raw_file)
-
     wholesale_custs = list(set(df[df['Wholesale Flag'] == 1]['Customer Name']))
 
     cust_ext_flag = pd.DataFrame({'Customer Name' : wholesale_custs})
