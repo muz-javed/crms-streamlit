@@ -35,7 +35,7 @@ def external_bankruptcy_status(name):
     input_val = f"Is {name} currently bankrupt? Answer with 'Yes' or 'No' at the beginning of your response. If 'Yes', provide specific references such as recent financial statements, news reports, or official filings that indicate the bankruptcy status."
     response = search.run(f"Is {name} bankrupt")
     vectorstore = FAISS.from_texts(
-        [response], embedding=OpenAIEmbeddings(open_api_key = "sk-svcacct-GKTLsVX_k40dbZcyLsSOm5xxeWofLmuLUa6J9vxhEuL6DT3BlbkFJQFKZyZNQh3pLQeGSd5qsJuRKPBjAxOpZAqzuYV_erZ-AA")
+        [response], embedding=OpenAIEmbeddings(api_key = "sk-svcacct-GKTLsVX_k40dbZcyLsSOm5xxeWofLmuLUa6J9vxhEuL6DT3BlbkFJQFKZyZNQh3pLQeGSd5qsJuRKPBjAxOpZAqzuYV_erZ-AA")
     )
     output_retriever = vectorstore.as_retriever()
     output_chain = (
