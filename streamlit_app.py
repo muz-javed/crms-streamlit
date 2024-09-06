@@ -79,12 +79,15 @@ if upload_raw_file:
     df = non_accrued_status(df)
     df = dbr_flag(df)
     df = litigation_flag(df)
-
-    st.write(df, default_rating)
-    
     df = capable_but_unwilling_flag(df, default_rating)
     df = likelihood_of_bankruptcy(df, default_rating)
     df = economic_loss_flag(df, df_assumptions)
+    df = collateral_liquidation_flag(df, df_collateral)
+    df = material_concession_flag(df, df_assumptions)
+    df = financial_deterioration_flag(df, df_assumptions)
+    df = collateral_degradation_flag(df)
+    df = material_overdraft_flag(df)
+    df = income_degradation_flag(df, df_income_source)
 
 
 
