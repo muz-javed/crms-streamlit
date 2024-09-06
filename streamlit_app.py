@@ -139,9 +139,24 @@ if upload_raw_file:
                 "DBR Flag"]
 
 
-    df['default_trigger'] = df[flag_cols].any(axis=1).astype(int)
+
+    df_final = df[flag_cols]
+    df_final['default_trigger'] = df_final[flag_cols].any(axis=1).astype(int)
+    df_final['customer_id'] = df['Customer ID']
+    df_final['facility_id'] = df['Facility ID']
+    df_final['customer_name'] = df['Customer Name']
+    df_final['facility_id'] = df['Facility ID']
+    df_final['added_at'] = datetime.now()
+    df_final['asset_type'] = df['Asset Type']
+    df_final['line_of_business'] = df['Line of Business']
+    df_final['whole_sale_flag'] = df['Whole sale Flag']
+    df_final['exposure_amount'] = df['Exposure (AED)']
+
+    non_flag_cols = ['added_at', 'customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'exposure_amount', 'asset_type', 'line_of_business', 'default_trigger']
     
-    st.write(df[['default_trigger'] + flag_cols])
+    df_final = df_final[non_flag_cols + flag_cols]
+    
+    st.write(df_final)
 
 
 
