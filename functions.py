@@ -71,8 +71,8 @@ def capable_but_unwilling_flag(df, default_rating):
 
 # Likelihood of bankruptcy
 def likelihood_of_bankruptcy(df, default_rating):
-    df['A high likelihood that the obligor will enter bankruptcy or other material financial reorganization'] = 0
-    df.loc[(df['Internal Rating'].isin(default_rating)), 'A high likelihood that the obligor will enter bankruptcy or other material financial reorganization'] = 1
+    df['High likelihood of bankruptcy or financial reorganization'] = 0
+    df.loc[(df['Internal Rating'].isin(default_rating)), 'High likelihood of bankruptcy or financial reorganization'] = 1
 
     return df
 
