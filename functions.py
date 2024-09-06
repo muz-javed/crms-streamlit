@@ -150,7 +150,7 @@ def collateral_liquidation_flag(df, df_collateral):
     
     df_collateral = df_collateral.merge(dates_df, how = 'left', on = 'As of Date')
     
-    df["Liquidation of collateral due to decline in the obligor’s credit worthiness"] = 0
+    df["Liquidation of collateral due to decline in the obligor's credit worthiness"] = 0
     as_of_date = df_collateral[df_collateral['Rank'] == 1]['As of Date'].iloc[0]
     
     for f_id in set(df_collateral[df_collateral['Rank'] == 1]['Facility ID']):
@@ -159,7 +159,7 @@ def collateral_liquidation_flag(df, df_collateral):
         rank_2 = list(df_collateral[(df_collateral['Facility ID'] == f_id) & (df_collateral['Rank'] == 2)]['Collateral ID'])
     
         if len(list(set(rank_2) - set(rank_1))) > 0:
-            df.loc[(df['Facility ID'] == f_id) & (df['As of Date'] == as_of_date), "Liquidation of collateral due to decline in the obligor’s credit worthiness"] = 1
+            df.loc[(df['Facility ID'] == f_id) & (df['As of Date'] == as_of_date), "Liquidation of collateral due to decline in the obligor's credit worthiness"] = 1
 
     return df
 
@@ -247,12 +247,12 @@ def income_degradation_flag(df, df_income_source):
     current_date_df['std_dev'] = current_date_df['var_funds'].pow(0.5)
     current_date_df['lower_bound'] =current_date_df['avg_funds'] - (0.5 * current_date_df['std_dev'])
     
-    current_date_df["Obligor’s income sources no longer exist or distressed"] = 0
-    current_date_df.loc[current_date_df['Funds'] < current_date_df['lower_bound'], "Obligor’s income sources no longer exist or distressed"] = 1
+    current_date_df["Obligor's income sources no longer exist or distressed"] = 0
+    current_date_df.loc[current_date_df['Funds'] < current_date_df['lower_bound'], "Obligor's income sources no longer exist or distressed"] = 1
     
-    df = df.merge(current_date_df[['As of Date', 'Customer ID', "Obligor’s income sources no longer exist or distressed"]], how = 'left', on = ['As of Date', 'Customer ID'])
+    df = df.merge(current_date_df[['As of Date', 'Customer ID', "Obligor's income sources no longer exist or distressed"]], how = 'left', on = ['As of Date', 'Customer ID'])
 
-    df.loc[df["Obligor’s income sources no longer exist or distressed"].isna(), "Obligor’s income sources no longer exist or distressed"] = 0
+    df.loc[df["Obligor's income sources no longer exist or distressed"].isna(), "Obligor's income sources no longer exist or distressed"] = 0
 
     return df
 
@@ -264,12 +264,12 @@ def obligor_not_in_uae_6m(df, df_login_history):
     six_m_back_date = current_date - pd.DateOffset(days=180)
     
     six_m_df = df_login_history[df_login_history['Date'] >= six_m_back_date].reset_index(drop = True)
-    six_m_df["Obligor’s owner left UAE without clear rationale, 6+ months"] = six_m_df['Login Location'].apply(lambda x: 1 if x == 'Outside UAE' else 0)
-    six_m_df = six_m_df.groupby('Customer ID').agg({"Obligor’s owner left UAE without clear rationale, 6+ months": 'max'}).reset_index()
+    six_m_df["Obligor's owner left UAE without clear rationale, 6+ months"] = six_m_df['Login Location'].apply(lambda x: 1 if x == 'Outside UAE' else 0)
+    six_m_df = six_m_df.groupby('Customer ID').agg({"Obligor's owner left UAE without clear rationale, 6+ months": 'max'}).reset_index()
     six_m_df['As of Date'] = current_date
     
     df = df.merge(six_m_df, how = 'left', on = ['As of Date', 'Customer ID'])
-    df.loc[(df["Obligor’s owner left UAE without clear rationale, 6+ months"].isna()) | (df['Wholesale Flag'] == 0), "Obligor’s owner left UAE without clear rationale, 6+ months"] = 0
+    df.loc[(df["Obligor's owner left UAE without clear rationale, 6+ months"].isna()) | (df['Wholesale Flag'] == 0), "Obligor's owner left UAE without clear rationale, 6+ months"] = 0
 
     return df
 
@@ -280,12 +280,12 @@ def obligor_not_in_uae_3m(df, df_login_history):
     three_m_back_date = current_date - pd.DateOffset(days=90)
     
     three_m_back_date = df_login_history[df_login_history['Date'] >= three_m_back_date].reset_index(drop = True)
-    three_m_back_date["Obligor’s owner left UAE without clear rationale, 3+ months"] = three_m_back_date['Login Location'].apply(lambda x: 1 if x == 'Outside UAE' else 0)
-    three_m_back_date = three_m_back_date.groupby('Customer ID').agg({"Obligor’s owner left UAE without clear rationale, 3+ months": 'max'}).reset_index()
+    three_m_back_date["Obligor's owner left UAE without clear rationale, 3+ months"] = three_m_back_date['Login Location'].apply(lambda x: 1 if x == 'Outside UAE' else 0)
+    three_m_back_date = three_m_back_date.groupby('Customer ID').agg({"Obligor's owner left UAE without clear rationale, 3+ months": 'max'}).reset_index()
     three_m_back_date['As of Date'] = current_date
     
     df = df.merge(three_m_back_date, how = 'left', on = ['As of Date', 'Customer ID'])
-    df.loc[(df["Obligor’s owner left UAE without clear rationale, 3+ months"].isna()) | (df['Wholesale Flag'] == 1), "Obligor’s owner left UAE without clear rationale, 3+ months"] = 0
+    df.loc[(df["Obligor's owner left UAE without clear rationale, 3+ months"].isna()) | (df['Wholesale Flag'] == 1), "Obligor's owner left UAE without clear rationale, 3+ months"] = 0
 
     return df
 
