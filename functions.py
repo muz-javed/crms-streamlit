@@ -213,8 +213,8 @@ def collateral_degradation_flag(df):
 
     df['LTV'] = df['Exposure (AED)']/df['Collateral (AED)']
 
-    df['A significant deterioration in the value of collateral.'] = 0
-    df.loc[df['LTV'] > 1, 'A significant deterioration in the value of collateral.'] = 1
+    df['A significant deterioration in the value of collateral'] = 0
+    df.loc[df['LTV'] > 1, 'A significant deterioration in the value of collateral'] = 1
 
     return df
 
