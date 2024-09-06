@@ -227,7 +227,7 @@ if upload_raw_file:
     st.write(final_df)
 
     with st.spinner('Data is being loaded...'):
-        load_df_to_bq(raw_file.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
+        load_df_to_bq(df_final.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
         load_df_to_bq(final_df, 'crms_dataset', 'utp_transformed')
   
     st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
