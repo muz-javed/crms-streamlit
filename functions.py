@@ -151,7 +151,7 @@ def collateral_liquidation_flag(df, df_collateral):
 
 
 # Material Concession Flag
-def material_concession_flag(df, df_assumptions):
+def material_concession_flag(df, df_assumptions, df_pre_restructure):
     df = get_npv_value(df, df_assumptions)
     max_date = max(df['As of Date'])
     
