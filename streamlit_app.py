@@ -272,8 +272,8 @@ if upload_raw_file:
     href = f'<a href="data:application/octet-stream;base64,{b64}" download="Raw Data.xlsx" style="text-decoration: none;">download</a>'
     
     st.markdown(f"""
-    <div style="color: white;">
+    <span style="color: white;">
             Click here to {href} raw data</p>
             
-    </div>
+    </span>
     """, unsafe_allow_html=True)
