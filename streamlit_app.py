@@ -212,7 +212,7 @@ if upload_raw_file:
     trigger_cols = df_final.columns[9:]
     final_df = pd.DataFrame(columns = ['customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'asset_type', 'line_of_business', 'exposure_amount', 'trigger', 'flag', 'default_trigger'])
   
-    for i in range(0, len(raw_file)):
+    for i in range(0, len(df_final)):
         for j in trigger_cols:
             temp_df_list = [df_final['customer_id'][i], df_final['facility_id'][i], df_final['whole_sale_flag'][i], df_final['customer_name'][i], df_final['asset_type'][i], df_final['line_of_business'][i], df_final['exposure_amount'][i], j, df_final[j][i], df_final['default_trigger'][i]]
             temp_df = pd.DataFrame(temp_df_list).T
