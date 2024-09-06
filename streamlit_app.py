@@ -63,11 +63,11 @@ upload_raw_file = st.file_uploader('', type = 'xlsx')
 if upload_raw_file:
     # raw_file = pd.read_excel(upload_raw_file).head(5)
     df = pd.read_excel(upload_raw_file, sheet_name = 'Raw')
-    df_assumptions = pd.read_excel('raw_data_final.xlsx', sheet_name = 'Assumptions')
-    df_collateral = pd.read_excel('raw_data_final.xlsx', sheet_name = 'Collateral')
-    df_pre_restructure = pd.read_excel('raw_data_final.xlsx', sheet_name = 'Pre-Restructures')
-    df_income_source = pd.read_excel('raw_data_final.xlsx', sheet_name = 'Income Source')
-    df_login_history = pd.read_excel('raw_data_final.xlsx', sheet_name = 'User Login History')
+    df_assumptions = pd.read_excel(upload_raw_file, sheet_name = 'Assumptions')
+    df_collateral = pd.read_excel(upload_raw_file, sheet_name = 'Collateral')
+    df_pre_restructure = pd.read_excel(upload_raw_file, sheet_name = 'Pre-Restructures')
+    df_income_source = pd.read_excel(upload_raw_file, sheet_name = 'Income Source')
+    df_login_history = pd.read_excel(upload_raw_file, sheet_name = 'User Login History')
 
 
 
