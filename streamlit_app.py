@@ -119,10 +119,6 @@ if upload_raw_file:
 
     df = df[df['As of Date'] == max_date].reset_index(drop = True)
 
-    # df = df.loc[df['Wholesale Flag'] == 1].reset_index(drop = True)
-
-
-
     flag_cols = ["90+ DPD",
                 "Account-specific provision held",
                 "Credit facility on a non-accrued status",
@@ -166,6 +162,8 @@ if upload_raw_file:
     df_final = df_final[non_flag_cols + flag_cols]
     
     # st.write(df_final)
+
+    df_final_retail = df_final.loc[df_final['whole_sale_flag'] == 1].reset_index(drop = True)
 
 
     
@@ -221,26 +219,26 @@ if upload_raw_file:
 
 
     # TRANSFORMED FILE #
-    trigger_cols = df_final.columns[9:]
-    final_df = pd.DataFrame(columns = ['customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'asset_type', 'line_of_business', 'exposure_amount', 'trigger', 'flag', 'default_trigger'])
+    trigger_cols = df_final_retail.columns[9:]
+    final_df_retail = pd.DataFrame(columns = ['customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'asset_type', 'line_of_business', 'exposure_amount', 'trigger', 'flag', 'default_trigger'])
   
-    for i in range(0, len(df_final)):
+    for i in range(0, len(df_final_retail)):
         for j in trigger_cols:
-            temp_df_list = [df_final['customer_id'][i], df_final['facility_id'][i], df_final['whole_sale_flag'][i], df_final['customer_name'][i], df_final['asset_type'][i], df_final['line_of_business'][i], df_final['exposure_amount'][i], j, df_final[j][i], df_final['default_trigger'][i]]
+            temp_df_list = [df_final_retail['customer_id'][i], df_final_retail['facility_id'][i], df_final_retail['whole_sale_flag'][i], df_final_retail['customer_name'][i], df_final_retail['asset_type'][i], df_final_retail['line_of_business'][i], df_final_retail['exposure_amount'][i], j, df_final_retail[j][i], df_final_retail['default_trigger'][i]]
             temp_df = pd.DataFrame(temp_df_list).T
-            temp_df.columns = final_df.columns
+            temp_df.columns = final_df_retail.columns
             
             final_df = pd.concat([final_df, temp_df]).reset_index(drop = True)
 
-    final_df['cust_def_flag'] = 'No'
-    final_df.loc[final_df['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
-    final_df.insert(0, 'added_at', datetime.now())
+    final_df_retail['cust_def_flag'] = 'No'
+    final_df_retail.loc[final_df['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
+    final_df_retail.insert(0, 'added_at', datetime.now())
 
     # st.write(final_df)
 
     with st.spinner('Data is being loaded...'):
-        load_df_to_bq(df_final.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
-        load_df_to_bq(final_df, 'crms_dataset', 'utp_transformed')
+        load_df_to_bq(df_final_retail.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
+        load_df_to_bq(final_df_retail, 'crms_dataset', 'utp_transformed')
   
     st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
     
@@ -259,7 +257,7 @@ if upload_raw_file:
     st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://app.powerbi.com/groups/me/reports/c413dfa6-68f7-4720-9d64-d9cab2590fed/43abb76009044b297d97?experience=power-bip" style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard.</span>', unsafe_allow_html=True)
 
     buffer = BytesIO()
-    df_final.to_excel(buffer, index=False, engine='xlsxwriter')
+    df_final_retail.to_excel(buffer, index=False, engine='xlsxwriter')
     buffer.seek(0)
     b64 = base64.b64encode(buffer.read()).decode()
     href = f'<a href="data:application/octet-stream;base64,{b64}" download="Raw Data.xlsx" style="text-decoration: none;">here</a>'
