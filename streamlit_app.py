@@ -88,6 +88,9 @@ if upload_raw_file:
     df = collateral_degradation_flag(df)
     df = material_overdraft_flag(df)
     df = income_degradation_flag(df, df_income_source)
+    df = obligor_not_in_uae_6m(df, df_login_history)
+    df = obligor_not_in_uae_3m(df, df_login_history)
+    df = repeated_restructuring_flag(df, df_assumptions)
 
 
 
