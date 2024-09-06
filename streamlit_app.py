@@ -83,7 +83,7 @@ if upload_raw_file:
     df = likelihood_of_bankruptcy(df, default_rating)
     df = economic_loss_flag(df, df_assumptions)
     df = collateral_liquidation_flag(df, df_collateral)
-    df = material_concession_flag(df, df_assumptions)
+    df = material_concession_flag(df, df_assumptions, df_pre_restructure)
     df = financial_deterioration_flag(df, df_assumptions)
     df = collateral_degradation_flag(df)
     df = material_overdraft_flag(df)
