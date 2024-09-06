@@ -8,7 +8,7 @@ from io import BytesIO
 from datetime import datetime
 from google.cloud import bigquery
 from google.oauth2 import service_account
-from openai_functions import bankruptcy_status
+from openai_functions import external_bankruptcy_status
 from dataframe_functions import load_df_to_bq
 
 from functions import *
@@ -99,9 +99,14 @@ if upload_raw_file:
 
     
     # raw_file = bankruptcy_status(raw_file)
+
+    wholesale_custs = list(set(df[df['Wholesale Flag'] == 1]['Customer Name']))
+
+    cust_ext_flag = pd.DataFrame({'Customer Name' : wholesale_custs})
+    
     
   
-    st.write(df)
+    st.write(cust_ext_flag)
 
 
 
