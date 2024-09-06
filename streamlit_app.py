@@ -166,6 +166,9 @@ if upload_raw_file:
     df_final_retail = df_final.loc[df_final['whole_sale_flag'] == 0].reset_index(drop = True)
 
 
+    df_final.loc[df_final['whole_sale_flag'] == 1].reset_index(drop = True).to_excel('Wholesale Custs.xlsx')
+
+
     
 
 
