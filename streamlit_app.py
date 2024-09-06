@@ -101,7 +101,7 @@ if upload_raw_file:
 
     cust_ext_flag = pd.DataFrame({'Customer Name' : wholesale_custs})
 
-    cust_ext_flag['External Bankruptcy Flag'] = cust_ext_flag['Name'].apply(external_bankruptcy_status)
+    cust_ext_flag['External Bankruptcy Flag'] = cust_ext_flag['Customer Name'].apply(external_bankruptcy_status)
     
     
   
