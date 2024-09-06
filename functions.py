@@ -27,6 +27,13 @@ def non_accrued_status(df):
 
     return df
 
+# Covenant Breach Flag
+def non_accrued_status(df):
+    df['Breach of material covenant in Credit facility'] = 0
+    df.loc[df['Covenant Breach Flag'] == 1, 'Breach of material covenant in Credit facility'] = 1
+
+    return df
+
 # DBR Flag
 def dbr_flag(df):
     df['DBR Flag'] = 0
