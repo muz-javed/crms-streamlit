@@ -139,7 +139,19 @@ if upload_raw_file:
                 "DBR Fag"]
 
 
-    st.write(df[flag_cols])
+    missing_cols = [col for col in flag_cols if col not in df.columns]
+
+    # If there are missing columns, print a warning
+    if missing_cols:
+        st.write(f"Warning: The following columns are missing from the dataframe: {missing_cols}")
+    
+    # # Filter only the columns that are present in the dataframe
+    # available_flag_cols = [col for col in flag_cols if col in df.columns]
+    
+    # # Display the available columns
+    # st.write(df[available_flag_cols])
+
+    # st.write(df[flag_cols])
 
 
 
