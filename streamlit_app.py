@@ -100,6 +100,8 @@ if upload_raw_file:
     wholesale_custs = list(set(df[df['Wholesale Flag'] == 1]['Customer Name']))
 
     cust_ext_flag = pd.DataFrame({'Customer Name' : wholesale_custs})
+
+    cust_ext_flag['External Bankruptcy Flag'] = cust_ext_flag['Name'].apply(external_bankruptcy_status)
     
     
   
