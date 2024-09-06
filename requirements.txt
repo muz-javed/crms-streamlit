@@ -7,7 +7,7 @@ langchain
 pydantic
 langchain-openai
 textblob
-langchain_community
+langchain-community
 docx
 google-api-python-client
 requests
