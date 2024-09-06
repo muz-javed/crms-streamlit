@@ -131,7 +131,7 @@ if upload_raw_file:
                 "Obligor's owner left UAE without clear rationale for 6 plus months",
                 "Obligor's owner left UAE without clear rationale for 3 plus months",
                 "Significant deterioration in financial performance",
-                "A high likelihood that the obligor will enter bankruptcy or other material financial reorganization",
+                "High likelihood of bankruptcy / financial reorganization",
                 "Breach of material covenant in Credit facility",
                 "Repeated restructurings due to financial difficulties",
                 "Obligor's income sources no longer exist or distressed",
