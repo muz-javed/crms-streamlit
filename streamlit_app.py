@@ -149,7 +149,7 @@ if upload_raw_file:
     df_final['added_at'] = datetime.now()
     df_final['asset_type'] = df['Asset Type']
     df_final['line_of_business'] = df['Line of Business']
-    df_final['whole_sale_flag'] = df['Whole sale Flag']
+    df_final['whole_sale_flag'] = df['Wholesale Flag']
     df_final['exposure_amount'] = df['Exposure (AED)']
 
     non_flag_cols = ['added_at', 'customer_id', 'facility_id', 'whole_sale_flag', 'customer_name', 'exposure_amount', 'asset_type', 'line_of_business', 'default_trigger']
