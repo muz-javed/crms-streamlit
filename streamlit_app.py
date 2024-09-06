@@ -96,20 +96,64 @@ if upload_raw_file:
     df = cbuae_defaulted(df, df_cb_defaults)
 
     
-    wholesale_custs = list(set(df[df['Wholesale Flag'] == 1]['Customer Name']))
-    cust_ext_flag = pd.DataFrame({'Customer Name' : wholesale_custs})
-    cust_ext_flag['External Bankruptcy Flag'] = cust_ext_flag['Customer Name'].apply(external_bankruptcy_status)
+    # wholesale_custs = list(set(df[df['Wholesale Flag'] == 1]['Customer Name']))
+    # cust_ext_flag = pd.DataFrame({'Customer Name' : wholesale_custs})
+    # cust_ext_flag['External Bankruptcy Flag'] = cust_ext_flag['Customer Name'].apply(external_bankruptcy_status)
 
-    df = df.merge(cust_ext_flag, how = 'left', on = 'Customer Name')
-    df.loc[df['External Bankruptcy Flag'].isna(), 'External Bankruptcy Flag'] = 0
+    # df = df.merge(cust_ext_flag, how = 'left', on = 'Customer Name')
+    # df.loc[df['External Bankruptcy Flag'].isna(), 'External Bankruptcy Flag'] = 0
 
-    # df['External Bankruptcy Flag'] = 0
+    df['External Bankruptcy Flag'] = 0
     
     df["Bank filed obligor’s bankruptcy order"] = 0
     df.loc[(df['External Bankruptcy Flag'] == 1) | (df['Internal Bankruptcy Flag'] == 1), "Bank filed obligor’s bankruptcy order"] = 1
     
   
-    st.write(cust_ext_flag, df)
+    # st.write(cust_ext_flag, df)
+
+
+
+    flag_cols = ["90+ DPD",
+                "Account-specific provision held ",
+                "Credit facility on a non-accrued status",
+                "Partial facility sale at economic loss",
+                "Bank filed obligor’s bankruptcy order",
+                "Obligor's default by another Bank/FI",
+                "Obligor's unwillingness to meet obligations",
+                "Liquidation of collateral due to decline in the obligor’s credit worthiness",
+                "Material concessions granted under restructuring terms",
+                "Obligor’s owner left UAE without clear rationale, 6+ months",
+                "Obligor’s owner left UAE without clear rationale, 3+ months",
+                "Significant deterioration in financial performance",
+                "A high likelihood that the obligor will enter bankruptcy or other material financial reorganization",
+                "Breach of material covenant in Credit facility",
+                "Repeated restructurings due to financial difficulties",
+                "Obligor’s income sources no longer exist or distressed",
+                "Significant deterioration in operating assets",
+                "Asset-based lending: Assets must generate sufficient cash flow",
+                "A significant deterioration in the value of collateral",
+                "Pending litigation or  regulatory changes with negative impact",
+                "A loss of key staff to the obligor’s organization",
+                "Material overdraft consistently at/above limits with irregular inflows",
+                "External circumstances affecting repayment ability",
+                "DBR Fag"]
+
+
+    st.write(df[flag_cols])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
