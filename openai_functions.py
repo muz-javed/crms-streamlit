@@ -1,20 +1,5 @@
-# import os
-import streamlit as st
-# import langchain
-# import openai
-# from langchain.llms import OpenAI
-# from langchain.prompts import PromptTemplate
-# from langchain.chains import LLMChain
-# from langchain.chains import SequentialChain
-# from langchain_community.utilities import GoogleSearchAPIWrapper
-# from langchain_core.tools import Tool, StructuredTool
-# from langchain.chat_models import ChatOpenAI
-# from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, MessagesPlaceholder
-# from langchain.agents import OpenAIFunctionsAgent, AgentExecutor
-# from langchain.schema import SystemMessage
-# from langchain.memory import ConversationBufferMemory
-
 import os
+import streamlit as st
 from langchain_google_community import GoogleSearchAPIWrapper
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
@@ -30,8 +15,6 @@ GOOGLE_CSE_ID = "d6a7169ef0a274385"
 os.environ['GOOGLE_API_KEY'] = "AIzaSyBjWM0cyxXBjoiRgdh7cFbSJImF6U05HpU"
 os.environ['GOOGLE_CSE_ID'] = "d6a7169ef0a274385"
 
-
-
 chat = ChatOpenAI(
     openai_api_key = api_key,
     temperature=0.7
@@ -46,8 +29,9 @@ prompt = ChatPromptTemplate.from_template(
 )
  
 def bankruptcy_status(df):
+    
     def is_customer_bankrupt(name):
-        st.write(name)
+        
         input_val = f"Is {name} currently bankrupt? Answer with 'Yes' or 'No' at the beginning of your response. If 'Yes', provide specific references such as recent financial statements, news reports, or official filings that indicate the bankruptcy status."
         response = search.run(f"Is {name} bankrupt")
         vectorstore = FAISS.from_texts(
@@ -66,6 +50,7 @@ def bankruptcy_status(df):
         else:
             out_val = 0
         return out_val
+        
     df['external_bankruptcy_flag'] = df['Customer Name'].apply(is_customer_bankrupt)
     return df
 
