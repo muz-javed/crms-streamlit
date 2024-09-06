@@ -84,7 +84,7 @@ if upload_raw_file:
     
     df = capable_but_unwilling_flag(df, default_rating)
     df = likelihood_of_bankruptcy(df, default_rating)
-    df = economic_loss_flag(df)
+    df = economic_loss_flag(df, df_assumptions)
 
 
 
