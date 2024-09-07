@@ -211,9 +211,8 @@ if upload_raw_file:
         load_df_to_bq(df_final.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
         load_df_to_bq(final_df_retail, 'crms_dataset', 'utp_transformed')
         load_df_to_bq(final_df_wholesale, 'crms_dataset', 'utp_transformed_wholesale')
-
-  
-    st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
+        
+        st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
     
     st.markdown("<hr>", unsafe_allow_html=True)
     st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white;">Dashboard</h5></div>""", unsafe_allow_html=True)
