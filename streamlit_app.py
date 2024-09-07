@@ -193,7 +193,7 @@ if upload_raw_file:
         final_df_retail = final_df.loc[final_df['whole_sale_flag'] == 0].reset_index(drop = True)
     
     
-    
+        final_df_wholesale = final_df_wholesale.loc[final_df_wholesale['whole_sale_flag'] == 1].reset_index(drop = True)
         final_df_wholesale = final_df.groupby(['added_at', 'customer_id', 'whole_sale_flag', 'customer_name', 'asset_type',
                                                'line_of_business', 'trigger']).agg(exposure_amount = ('exposure_amount', 'sum'),
                                                                                    flag = ('flag', 'max'),
