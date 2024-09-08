@@ -233,7 +233,7 @@ if upload_raw_file:
 
     # df_final.loc[df_final['Obligor_cross_default'].isna(), 'Obligor_cross_default'] = df_final['default_trigger']
     
-    # st.write(df_final)
+    st.write(df_final)
 
     df_final.rename(columns = {"default_trigger", "utp_trigger"}, inplace = True)
 
