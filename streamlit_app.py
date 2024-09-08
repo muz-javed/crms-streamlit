@@ -115,7 +115,7 @@ if upload_raw_file:
     
         df["External Bankruptcy Flag"] = 0
         df["Obligor classified default by rating agency"] = 0
-        df["Crisis in the obligor’s sector"] = 0
+        df["Crisis in the obligor's sector"] = 0
         df["Subsidiary default with obligor guarantee"] = 0
         df["Breach of major terms or non-payment"] = 0
 
@@ -158,7 +158,7 @@ if upload_raw_file:
                     "External circumstances affecting repayment ability",
                     "DBR Flag",
                     "Obligor classified default by rating agency",
-                    "Crisis in the obligor’s sector",
+                    "Crisis in the obligor's sector",
                     "Subsidiary default with obligor guarantee",
                     "Breach of major terms or non-payment"]
     
