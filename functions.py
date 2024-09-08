@@ -43,8 +43,8 @@ def bank_flag(df):
 
 # DBR Flag
 def dbr_flag(df):
-    df['DBR Flag'] = 0
-    df.loc[(df['DBR Flag'] == 1) & (df['Wholesale Flag'] == 0), 'DBR Flag'] = 1
+    df['Stressed DBR breaches internal limits'] = 0
+    df.loc[(df['DBR Flag'] == 1) & (df['Wholesale Flag'] == 0), 'Stressed DBR breaches internal limits'] = 1
 
     return df
 
