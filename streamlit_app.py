@@ -37,7 +37,7 @@ with st.sidebar:
         st.markdown(f"""<div style="border-radius: 5px;"><h4 style="text-align:left; color: white; font-weight: bold;">Default Identification and SICR Dashboards</h4></div>""", unsafe_allow_html=True)
         st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white; ">Follow the below steps:</h5></div>""", unsafe_allow_html=True)
 
-        df = pd.read_excel('Data Dictionary.xlsx')
+        xlsx = pd.read_excel('Data Dictionary.xlsx')
         buffer = BytesIO()
         # df.to_excel(buffer, index=False, engine='xlsxwriter')
         with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
