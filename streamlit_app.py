@@ -230,6 +230,8 @@ if upload_raw_file:
     obligor_column = df_final.pop('Obligor_cross_default')
     line_of_business_index = df_final.columns.get_loc('line_of_business')
     df_final.insert(line_of_business_index + 1, 'Obligor_cross_default', obligor_column)
+
+    df_final.loc[df_final['Obligor_cross_default'].isna(), 'Obligor_cross_default'] = df_final['default_trigger']
     
     st.write(df_final)
 
