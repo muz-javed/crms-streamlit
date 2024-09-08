@@ -189,12 +189,12 @@ def material_concession_flag(df, df_assumptions, df_pre_restructure):
 
 # Financial deterioration flag
 def financial_deterioration_flag(df, df_assumptions):
-    current_ratio = df_assumptions['Current Ratio Threshold'].iloc[0]
+    # current_ratio = df_assumptions['Current Ratio Threshold'].iloc[0]
     quick_ratio = df_assumptions['Quick Ratio Threshold'].iloc[0]
     leverage_ratio = df_assumptions['Leverage Ratio Threshold'].iloc[0]
     
     df['Significant deterioration in financial performance'] = 0
-    df.loc[((df['Current Ratio'] < current_ratio) | (df['Quick Ratio'] < quick_ratio) | (df['Leverage Ratio'] > leverage_ratio)) & (df['Wholesale Flag'] == 1), 'Significant deterioration in financial performance'] = 1
+    df.loc[((df['Quick Ratio'] < quick_ratio) | (df['Leverage Ratio'] > leverage_ratio)) & (df['Wholesale Flag'] == 1), 'Significant deterioration in financial performance'] = 1
 
     return df
 
@@ -203,7 +203,7 @@ def financial_deterioration_flag(df, df_assumptions):
 def operating_assets_degradation_flag(df):
     
     df['Significant deterioration in operating assets'] = 0
-    df.loc[((df['Current Ratio'] < 1) | (df['Current Ratio'] > 2)) & (df['Wholesale Flag'] == 1), 'Significant deterioration in operating assets'] = 1
+    df.loc[((df['Quick Ratio'] < 1) | (df['Quick Ratio'] > 2)) & (df['Wholesale Flag'] == 1), 'Significant deterioration in operating assets'] = 1
 
     return df
 
