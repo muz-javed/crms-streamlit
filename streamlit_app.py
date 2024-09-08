@@ -37,9 +37,13 @@ with st.sidebar:
         st.markdown(f"""<div style="border-radius: 5px;"><h4 style="text-align:left; color: white; font-weight: bold;">Default Identification and SICR Dashboards</h4></div>""", unsafe_allow_html=True)
         st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white; ">Follow the below steps:</h5></div>""", unsafe_allow_html=True)
 
-        df = pd.read_excel('template.xlsx')
+        df = pd.read_excel('Data Dictionary.xlsx')
         buffer = BytesIO()
-        df.to_excel(buffer, index=False, engine='xlsxwriter')
+        # df.to_excel(buffer, index=False, engine='xlsxwriter')
+        with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+            for sheet_name, df in xls.items():
+                df.to_excel(writer, sheet_name=sheet_name, index=False)
+                
         buffer.seek(0)
         b64 = base64.b64encode(buffer.read()).decode()
         href = f'<a href="data:application/octet-stream;base64,{b64}" download="template.xlsx" style="text-decoration: none;">attached</a>'
