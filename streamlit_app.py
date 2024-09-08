@@ -54,7 +54,7 @@ with st.sidebar:
         st.markdown(f"""
         <div style="border-radius: 5px;">
             <h5 style="text-align:left; color: white;">
-                <p style="margin-bottom: 5px; font-size: 13px;">1. Prepare the data as per the {href} template.</p>
+                <p style="margin-bottom: 5px; font-size: 13px;">1. Prepare the data as per the {href} data dictionary.</p>
                 <p style="margin-bottom: 5px; font-size: 13px;">2. Upload the data file.</p>
                 <p style="margin-bottom: 5px; font-size: 13px;">3. Visualize the data in the dashboard.</p>
             </h5>
