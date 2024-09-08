@@ -189,6 +189,7 @@ def material_concession_flag(df, df_assumptions, df_pre_restructure):
 
 # Financial deterioration flag
 def financial_deterioration_flag(df, df_assumptions):
+    st.write(df_assumptions)
     # current_ratio = df_assumptions['Current Ratio Threshold'].iloc[0]
     quick_ratio = df_assumptions['Quick Ratio Threshold'].iloc[0]
     leverage_ratio = df_assumptions['Leverage Ratio Threshold'].iloc[0]
