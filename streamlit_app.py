@@ -226,7 +226,7 @@ if upload_raw_file:
         unsafe_allow_html=True
     )
 
-    dashboard_link = "https://app.powerbi.com/groups/me/reports/785085dc-78f7-465d-a2e3-7b1bb927e872/43abb76009044b297d97?experience=power-bi&bookmarkGuid=cb53c931dd230b7ee458" 
+    dashboard_link = "https://app.powerbi.com/links/zRPYIwfx2L?ctid=5b973f99-77df-4beb-b27d-aa0c70b8482c&pbi_source=linkShare" 
     
     st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href={dashboard_link} style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard.</span>', unsafe_allow_html=True)
 
