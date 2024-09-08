@@ -233,7 +233,7 @@ if upload_raw_file:
         unsafe_allow_html=True
     )
 
-    st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://app.powerbi.com/links/zRPYIwfx2L?ctid=5b973f99-77df-4beb-b27d-aa0c70b8482c&pbi_source=linkShare" style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard.</span>', unsafe_allow_html=True)
+    st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://apps.powerapps.com/play/e/a3c669f6-ac2e-4e77-ad43-beab3e15bee7/a/59a11872-a620-40b2-b23a-7aa4f7906d7e?tenantId=5b973f99-77df-4beb-b27d-aa0c70b8482c&hint=f693551a-ac73-4be1-931b-a270f8c88c90&sourcetime=1725760991210" style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard.</span>', unsafe_allow_html=True)
 
     buffer = BytesIO()
     df_final.to_excel(buffer, index=False, engine='xlsxwriter')
