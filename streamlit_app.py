@@ -223,7 +223,7 @@ if upload_raw_file:
         
 
     
-    # df_final = df_final.merge()
+    # df_final = df_final.merge(final_df_wholesale[['customer_id', 'default_trigger']], how = 'left', on = 'customer_id').reset_index(drop = True)
     st.write(df_final)
 
 
