@@ -226,6 +226,10 @@ if upload_raw_file:
     grouped_wholesale = final_df_wholesale[['customer_id', 
                         'default_trigger']].groupby('customer_id').agg(Obligor_cross_default = ('default_trigger','max')).reset_index()
     df_final = df_final.merge(grouped_wholesale, how = 'left', on = 'customer_id').reset_index(drop = True)
+    line_of_business_index = columns.index('line_of_business')
+    columns.insert(line_of_business_index + 1, 'Obligor_cross_default')
+    df_final = df_final[columns]
+    
     st.write(df_final)
 
 
