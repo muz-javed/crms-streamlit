@@ -156,7 +156,7 @@ if upload_raw_file:
                     "A loss of key staff to obligor's organization",
                     "Material overdraft consistently at or above limits with irregular inflows",
                     "External circumstances affecting repayment ability",
-                    "DBR Flag",
+                    "Stressed DBR breaches internal limits",
                     "Obligor classified default by rating agency",
                     "Crisis in the obligor's sector",
                     "Subsidiary default with obligor guarantee",
@@ -234,6 +234,8 @@ if upload_raw_file:
     # df_final.loc[df_final['Obligor_cross_default'].isna(), 'Obligor_cross_default'] = df_final['default_trigger']
     
     # st.write(df_final)
+
+    df_final = df_final.rename(columns = {"default_trigger", "utp_trigger"}, inplace = True)
 
 
     with st.spinner('Data is being loaded...'):
