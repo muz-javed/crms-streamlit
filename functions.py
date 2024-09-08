@@ -3,15 +3,15 @@ import pandas as pd
 import streamlit as st
 
 # 90 Plus DPD Flag
-def dpd_90_plus_flag(df):
-    temp_custs = df.groupby(['As of Date', 'Customer ID']).agg(total_exp = ('Exposure (AED)', 'sum'))
-    df = df.merge(temp_custs, how = 'left', on = ['As of Date', 'Customer ID']).reset_index(drop = True)
-    df['materiality_perc'] = df['Exposure (AED)']/df['total_exp']
+# def dpd_90_plus_flag(df):
+#     temp_custs = df.groupby(['As of Date', 'Customer ID']).agg(total_exp = ('Exposure (AED)', 'sum'))
+#     df = df.merge(temp_custs, how = 'left', on = ['As of Date', 'Customer ID']).reset_index(drop = True)
+#     df['materiality_perc'] = df['Exposure (AED)']/df['total_exp']
 
-    df['90+ DPD'] = 0
-    df.loc[(df['materiality_perc'] > 0.05) & (df['DPD'] > 90), '90+ DPD'] = 1
+#     df['90+ DPD'] = 0
+#     df.loc[(df['materiality_perc'] > 0.05) & (df['DPD'] > 90), '90+ DPD'] = 1
 
-    return df
+#     return df
 
 # Account Specific Provisions
 def specific_provision_held(df):
