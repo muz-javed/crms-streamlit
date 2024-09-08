@@ -222,9 +222,12 @@ if upload_raw_file:
         st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been processed successfully.</p></div>""", unsafe_allow_html=True)
         
 
-    
-    df_final = df_final.merge(final_df_wholesale[['customer_id', 'default_trigger']].groupby('customer_id').agg(Obligor_cross_default = ('default_trigger', 'max')).reset_index(drop = True), how = 'left', on = 'customer_id').reset_index(drop = True)
-    st.write(df_final)
+
+    grouped_wholesale = final_df_wholesale[['customer_id', 
+                        'default_trigger']].groupby('customer_id').agg(Obligor_cross_default = ('default_trigger', 
+                                                                                                'max')).reset_index(drop = True)
+    # df_final = df_final.merge(, how = 'left', on = 'customer_id').reset_index(drop = True)
+    st.write(grouped_wholesale)
 
 
     
