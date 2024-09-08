@@ -232,7 +232,7 @@ if upload_raw_file:
     columns.insert(line_of_business_index + 1, 'Obligor_cross_default')
     df_final = df_final[columns]
     
-    st.write(df_final)
+    st.table(df_final)
 
 
     
