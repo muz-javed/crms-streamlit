@@ -49,7 +49,7 @@ with st.sidebar:
                 
         buffer.seek(0)
         b64 = base64.b64encode(buffer.read()).decode()
-        href = f'<a href="data:application/octet-stream;base64,{b64}" download="template.xlsx" style="text-decoration: none;">attached</a>'
+        href = f'<a href="data:application/octet-stream;base64,{b64}" download="Data Dictionary.xlsx" style="text-decoration: none;">attached</a>'
         
         st.markdown(f"""
         <div style="border-radius: 5px;">
