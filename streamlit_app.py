@@ -114,6 +114,11 @@ if upload_raw_file:
         # df.loc[df['External Bankruptcy Flag'].isna(), 'External Bankruptcy Flag'] = 0
     
         df['External Bankruptcy Flag'] = 0
+        df['Obligor classified default by rating agency'] = 0
+        df["Crisis in the obligor’s sector"] = 0
+        df["Subsidiary default with obligor guarantee"] = 0
+        df["Breach of major terms or non-payment"] = 0
+
         
         df["Bank filed obligor's bankruptcy order"] = 0
         df.loc[(df['External Bankruptcy Flag'] == 1) | (df['Internal Bankruptcy Flag'] == 1), "Bank filed obligor's bankruptcy order"] = 1
@@ -150,8 +155,11 @@ if upload_raw_file:
                     "A loss of key staff to obligor's organization",
                     "Material overdraft consistently at or above limits with irregular inflows",
                     "External circumstances affecting repayment ability",
-                    "DBR Flag"]
-    
+                    "DBR Flag",
+                    'Obligor classified default by rating agency',
+                    "Crisis in the obligor’s sector",
+                    "Subsidiary default with obligor guarantee",
+                    "Breach of major terms or non-payment"]
     
     
         df_final = df[flag_cols]
