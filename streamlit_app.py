@@ -82,7 +82,7 @@ if upload_raw_file:
         st.session_state.discount_rate = df_assumptions['Discount Rate'].iloc[0]
         default_rating = list(df_assumptions['Default Internal Ratings'])
     
-        df = dpd_90_plus_flag(df)
+        # df = dpd_90_plus_flag(df)
         df = specific_provision_held(df)
         df = non_accrued_status(df)
         df = covenant_breach_flag(df)
@@ -134,7 +134,7 @@ if upload_raw_file:
     
         df = df[df['As of Date'] == max_date].reset_index(drop = True)
     
-        flag_cols = ["90+ DPD",
+        flag_cols = [
                     "Account-specific provision held",
                     "Credit facility on a non-accrued status",
                     "Partial facility sale at economic loss",
@@ -210,7 +210,7 @@ if upload_raw_file:
     
     
         final_df_wholesale = final_df.loc[final_df['whole_sale_flag'] == 1].reset_index(drop = True)
-        final_df_wholesale = final_df_wholesale.groupby(['added_at', 'customer_id', 'whole_sale_flag', 'customer_name', 'asset_type',
+        final_df_wholesale = final_df_wholesale.groupby(['added_at', 'facility_id', 'customer_id', 'whole_sale_flag', 'customer_name', 'asset_type',
                                                          'line_of_business', 'trigger']).agg(exposure_amount = ('exposure_amount', 'sum'),
                                                                                              flag = ('flag', 'max'),
                                                                                              default_trigger = ('default_trigger', 'max')).reset_index()
