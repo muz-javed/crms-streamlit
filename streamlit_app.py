@@ -34,7 +34,7 @@ with st.sidebar:
 
     cols = st.columns([0.3,4.7])
     with cols[1]:
-        st.markdown(f"""<div style="border-radius: 5px;"><h4 style="text-align:left; color: white; font-weight: bold;">Default Identification and SICR Dashboards</h4></div>""", unsafe_allow_html=True)
+        st.markdown(f"""<div style="border-radius: 5px;"><h4 style="text-align:left; color: white; font-weight: bold;">Default Identification Dashboard</h4></div>""", unsafe_allow_html=True)
         st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white; ">Follow the below steps:</h5></div>""", unsafe_allow_html=True)
 
         try:
