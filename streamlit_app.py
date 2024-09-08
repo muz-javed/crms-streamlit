@@ -235,7 +235,7 @@ if upload_raw_file:
     
     st.write(df_final)
 
-    df_final.rename(columns = {"default_trigger", "utp_trigger"}, inplace = True)
+    df_final.rename(columns = {"default_trigger":"utp_trigger"}, inplace = True)
 
 
     with st.spinner('Data is being loaded...'):
