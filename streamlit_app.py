@@ -223,9 +223,9 @@ if upload_raw_file:
         
 
 
-    grouped_wholesale = final_df_wholesale[['customer_id', 
-                        'default_trigger']].groupby('customer_id').agg(Obligor_cross_default = ('default_trigger','max')).reset_index()
-    df_final = df_final.merge(grouped_wholesale, how = 'left', on = 'customer_id').reset_index(drop = True)
+    grouped_wholesale = final_df_wholesale[['customer_id', 'facility_id',
+                        'default_trigger']].groupby(['customer_id', 'facility_id']).agg(Obligor_cross_default = ('default_trigger','max')).reset_index()
+    df_final = df_final.merge(grouped_wholesale, how = 'left', on = ['customer_id', 'facility_id']).reset_index(drop = True)
 
     obligor_column = df_final.pop('Obligor_cross_default')
     line_of_business_index = df_final.columns.get_loc('line_of_business')
