@@ -224,10 +224,9 @@ if upload_raw_file:
 
 
     grouped_wholesale = final_df_wholesale[['customer_id', 
-                        'default_trigger']].groupby('customer_id').agg(Obligor_cross_default = ('default_trigger', 
-                                                                                                'max')).reset_index(drop = True)
-    # df_final = df_final.merge(, how = 'left', on = 'customer_id').reset_index(drop = True)
-    st.write(grouped_wholesale)
+                        'default_trigger']].groupby('customer_id').agg(Obligor_cross_default = ('default_trigger','max')).reset_index()
+    df_final = df_final.merge(grouped_wholesale, how = 'left', on = 'customer_id').reset_index(drop = True)
+    st.write(df_final)
 
 
     
