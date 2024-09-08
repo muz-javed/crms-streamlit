@@ -233,41 +233,39 @@ if upload_raw_file:
 
     df_final.loc[df_final['Obligor_cross_default'].isna(), 'Obligor_cross_default'] = df_final['default_trigger']
     
-    st.write(df_final)
+    # st.write(df_final)
 
 
-    
-
-    # with st.spinner('Data is being loaded...'):
-    #     load_df_to_bq(df_final.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
-    #     load_df_to_bq(final_df_retail, 'crms_dataset', 'utp_transformed')
-    #     load_df_to_bq(final_df_wholesale, 'crms_dataset', 'utp_transformed_wholesale')
+    with st.spinner('Data is being loaded...'):
+        load_df_to_bq(df_final.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
+        load_df_to_bq(final_df_retail, 'crms_dataset', 'utp_transformed')
+        load_df_to_bq(final_df_wholesale, 'crms_dataset', 'utp_transformed_wholesale')
         
-    #     st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
+        st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been loaded successfully.</p></div>""", unsafe_allow_html=True)
     
-    # st.markdown("<hr>", unsafe_allow_html=True)
-    # st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white;">Dashboard</h5></div>""", unsafe_allow_html=True)
+    st.markdown("<hr>", unsafe_allow_html=True)
+    st.markdown(f"""<div style="border-radius: 5px;"><h5 style="text-align:left; color: white;">Dashboard</h5></div>""", unsafe_allow_html=True)
 
-    # st.markdown(
-    #     '<span style="color:white; padding-left: 10px;">The dashboard consists of:</span>'
-    #     '<ul style="padding-left: 10px;">'
-    #     '<li><span style="color:white; padding-left: 10px;">Page 1 - Summary page.</span></li>'
-    #     '<li><span style="color:white; padding-left: 10px;">Page 2 - Detailed page.</span></li>'
-    #     '</ul>',
-    #     unsafe_allow_html=True
-    # )
+    st.markdown(
+        '<span style="color:white; padding-left: 10px;">The dashboard consists of:</span>'
+        '<ul style="padding-left: 10px;">'
+        '<li><span style="color:white; padding-left: 10px;">Page 1 - Summary page.</span></li>'
+        '<li><span style="color:white; padding-left: 10px;">Page 2 - Detailed page.</span></li>'
+        '</ul>',
+        unsafe_allow_html=True
+    )
 
-    # st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://apps.powerapps.com/play/e/a3c669f6-ac2e-4e77-ad43-beab3e15bee7/a/59a11872-a620-40b2-b23a-7aa4f7906d7e?tenantId=5b973f99-77df-4beb-b27d-aa0c70b8482c&hint=f693551a-ac73-4be1-931b-a270f8c88c90&sourcetime=1725760991210" style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard.</span>', unsafe_allow_html=True)
+    st.markdown('<span style="color:white; padding-left: 10px;">Click</span> <a href="https://apps.powerapps.com/play/e/a3c669f6-ac2e-4e77-ad43-beab3e15bee7/a/59a11872-a620-40b2-b23a-7aa4f7906d7e?tenantId=5b973f99-77df-4beb-b27d-aa0c70b8482c&hint=f693551a-ac73-4be1-931b-a270f8c88c90&sourcetime=1725760991210" style="text-decoration: none;">here</a><span style="color:white;"> to view the dashboard.</span>', unsafe_allow_html=True)
 
-    # buffer = BytesIO()
-    # df_final.to_excel(buffer, index=False, engine='xlsxwriter')
-    # buffer.seek(0)
-    # b64 = base64.b64encode(buffer.read()).decode()
-    # href = f'<a href="data:application/octet-stream;base64,{b64}" download="Raw Data.xlsx" style="text-decoration: none;">here</a>'
+    buffer = BytesIO()
+    df_final.to_excel(buffer, index=False, engine='xlsxwriter')
+    buffer.seek(0)
+    b64 = base64.b64encode(buffer.read()).decode()
+    href = f'<a href="data:application/octet-stream;base64,{b64}" download="Raw Data.xlsx" style="text-decoration: none;">here</a>'
     
-    # st.markdown(f"""
-    # <span style="color: white; padding-left: 10px; margin-top: -20px;">
-    #         Click {href} to download raw data.</p>
+    st.markdown(f"""
+    <span style="color: white; padding-left: 10px; margin-top: -20px;">
+            Click {href} to download raw data.</p>
             
-    # </span>
-    # """, unsafe_allow_html=True)
+    </span>
+    """, unsafe_allow_html=True)
