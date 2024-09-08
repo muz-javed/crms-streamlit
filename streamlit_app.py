@@ -119,6 +119,7 @@ if upload_raw_file:
         df["Subsidiary default with obligor guarantee"] = 0
         df["Breach of major terms or non-payment"] = 0
 
+
         
         df["Bank filed obligor's bankruptcy order"] = 0
         df.loc[(df['External Bankruptcy Flag'] == 1) | (df['Internal Bankruptcy Flag'] == 1), "Bank filed obligor's bankruptcy order"] = 1
