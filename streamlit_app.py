@@ -142,25 +142,27 @@ if upload_raw_file:
                     "Obligor's default by another FI",
                     "Obligor's unwillingness to meet obligations",
                     "Liquidation of collateral due to decline in the obligor's credit worthiness",
+                    "Obligor classified default by rating agency",
                     "Material concessions granted under restructuring terms",
+                    "Obligor's income sources no longer exist or distressed",
+                    "A significant deterioration in the value of collateral",
+
                     "Obligor's owner left UAE without clear rationale for 6 plus months",
-                    "Obligor's owner left UAE without clear rationale for 3 plus months",
                     "Significant deterioration in financial performance",
                     "High likelihood of bankruptcy or financial reorganization",
                     "Breach of material covenant in Credit facility",
                     "Repeated restructurings due to financial difficulties",
-                    "Obligor's income sources no longer exist or distressed",
                     "Significant deterioration in operating assets",
-                    "A significant deterioration in the value of collateral",
                     "Pending litigation or  regulatory changes with negative impact",
                     "A loss of key staff to obligor's organization",
                     "Material overdraft consistently at or above limits with irregular inflows",
                     "External circumstances affecting repayment ability",
-                    "Stressed DBR breaches internal limits",
-                    "Obligor classified default by rating agency",
                     "Crisis in the obligor's sector",
                     "Subsidiary default with obligor guarantee",
-                    "Breach of major terms or non-payment"]
+                    "Breach of major terms or non-payment",
+            
+                    "Obligor's owner left UAE without clear rationale for 3 plus months",
+                    "Stressed DBR breaches internal limits"]
     
     
         df_final = df[flag_cols]
@@ -207,6 +209,36 @@ if upload_raw_file:
         # st.write(final_df)
     
         final_df_retail = final_df.loc[final_df['whole_sale_flag'] == 0].reset_index(drop = True)
+
+        non_retail_flags = ["Obligor's owner left UAE without clear rationale for 6 plus months",
+                            "Significant deterioration in financial performance",
+                            "High likelihood of bankruptcy or financial reorganization",
+                            "Breach of material covenant in Credit facility",
+                            "Repeated restructurings due to financial difficulties",
+                            "Significant deterioration in operating assets",
+                            "Pending litigation or  regulatory changes with negative impact",
+                            "A loss of key staff to obligor's organization",
+                            "Material overdraft consistently at or above limits with irregular inflows",
+                            "External circumstances affecting repayment ability",
+                            "Crisis in the obligor's sector",
+                            "Subsidiary default with obligor guarantee",
+                            "Breach of major terms or non-payment"]
+
+        final_df_retail = final_df_retail[~final_df_retail['trigger'].isin(non_retail_flags)].reset_index(drop = True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
     
         final_df_wholesale = final_df.loc[final_df['whole_sale_flag'] == 1].reset_index(drop = True)
@@ -217,6 +249,14 @@ if upload_raw_file:
         
         final_df_wholesale['cust_def_flag'] = 'No'
         final_df_wholesale.loc[final_df_wholesale['default_trigger'] == 1, 'cust_def_flag'] = 'Yes'
+
+
+        non_wholesale_flags = ["Obligor's owner left UAE without clear rationale for 3 plus months",
+                                "Stressed DBR breaches internal limits"]
+
+        final_df_wholesale = final_df_wholesale[~final_df_wholesale['trigger'].isin(non_wholesale_flags)].reset_index(drop = True)
+
+        
     
     
         st.markdown("""<div style='text-align: left; padding-left: 10px; color: #9cdea8; border-radius: 5px;'><p>Data has been processed successfully.</p></div>""", unsafe_allow_html=True)
