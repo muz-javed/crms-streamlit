@@ -225,6 +225,7 @@ if upload_raw_file:
                             "Breach of major terms or non-payment"]
 
         final_df_retail = final_df_retail[~final_df_retail['trigger'].isin(non_retail_flags)].reset_index(drop = True)
+        final_df_retail['rm_comments'] = ''
 
 
 
@@ -255,6 +256,7 @@ if upload_raw_file:
                                 "Stressed DBR breaches internal limits"]
 
         final_df_wholesale = final_df_wholesale[~final_df_wholesale['trigger'].isin(non_wholesale_flags)].reset_index(drop = True)
+        final_df_wholesale['rm_comments'] = ''
 
         
     
