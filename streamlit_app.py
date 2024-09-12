@@ -106,14 +106,14 @@ if upload_raw_file:
         df = cbuae_defaulted(df, df_cb_defaults)
     
         
-        # wholesale_custs = list(set(df[df['Wholesale Flag'] == 1]['Customer Name']))
-        # cust_ext_flag = pd.DataFrame({'Customer Name' : wholesale_custs})
-        # cust_ext_flag['External Bankruptcy Flag'] = cust_ext_flag['Customer Name'].apply(external_bankruptcy_status)
+        wholesale_custs = list(set(df[df['Wholesale Flag'] == 1]['Customer Name']))
+        cust_ext_flag = pd.DataFrame({'Customer Name' : wholesale_custs})
+        cust_ext_flag['External Bankruptcy Flag'] = cust_ext_flag['Customer Name'].apply(external_bankruptcy_status)
     
-        # df = df.merge(cust_ext_flag, how = 'left', on = 'Customer Name')
-        # df.loc[df['External Bankruptcy Flag'].isna(), 'External Bankruptcy Flag'] = 0
+        df = df.merge(cust_ext_flag, how = 'left', on = 'Customer Name')
+        df.loc[df['External Bankruptcy Flag'].isna(), 'External Bankruptcy Flag'] = 0
     
-        df["External Bankruptcy Flag"] = 0
+        # df["External Bankruptcy Flag"] = 0
         df["Obligor classified default by rating agency"] = 0
         df["Crisis in the obligor's sector"] = 0
         df["Subsidiary default with obligor guarantee"] = 0
