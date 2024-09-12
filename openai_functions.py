@@ -8,7 +8,8 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_community.vectorstores import FAISS
 
-api_key = "sk-svcacct-GKTLsVX_k40dbZcyLsSOm5xxeWofLmuLUa6J9vxhEuL6DT3BlbkFJQFKZyZNQh3pLQeGSd5qsJuRKPBjAxOpZAqzuYV_erZ-AA"
+# api_key = "sk-svcacct-GKTLsVX_k40dbZcyLsSOm5xxeWofLmuLUa6J9vxhEuL6DT3BlbkFJQFKZyZNQh3pLQeGSd5qsJuRKPBjAxOpZAqzuYV_erZ-AA"
+api_key = "sk-svcacct-v2jYMNkCPA_UyAU5hSt69i4IyQpoxmwd40rDlZZCFG4TcskWDaaivrZU3YGrwaXT3BlbkFJL8Ljpmv20S_UndywBoFE24atCP4HATx2pJ5s7_RTpeNQrKzv-fOaJjy5HMFJI8gA"
 GOOGLE_API_KEY = "AIzaSyBjWM0cyxXBjoiRgdh7cFbSJImF6U05HpU"
 GOOGLE_CSE_ID = "d6a7169ef0a274385"
 
@@ -81,7 +82,7 @@ def external_bankruptcy_status(name):
     input_val = f"Is {name} currently bankrupt? Answer with 'Yes' or 'No' at the beginning of your response. If 'Yes', provide specific references such as recent financial statements, news reports, or official filings that indicate the bankruptcy status."
     response = search.run(f"Is {name} bankrupt")
     vectorstore = FAISS.from_texts(
-        [response], embedding=OpenAIEmbeddings(api_key = "sk-svcacct-GKTLsVX_k40dbZcyLsSOm5xxeWofLmuLUa6J9vxhEuL6DT3BlbkFJQFKZyZNQh3pLQeGSd5qsJuRKPBjAxOpZAqzuYV_erZ-AA")
+        [response], embedding=OpenAIEmbeddings(api_key = "sk-svcacct-v2jYMNkCPA_UyAU5hSt69i4IyQpoxmwd40rDlZZCFG4TcskWDaaivrZU3YGrwaXT3BlbkFJL8Ljpmv20S_UndywBoFE24atCP4HATx2pJ5s7_RTpeNQrKzv-fOaJjy5HMFJI8gA")
     )
     output_retriever = vectorstore.as_retriever()
     output_chain = (
