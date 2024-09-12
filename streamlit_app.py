@@ -108,7 +108,7 @@ if upload_raw_file:
         
         wholesale_custs = list(set(df[df['Wholesale Flag'] == 1]['Customer Name']))
         cust_ext_flag = pd.DataFrame({'Customer Name' : wholesale_custs})
-        st.write(wholesale_custs)
+        st.write(cust_ext_flag)
         cust_ext_flag['External Bankruptcy Flag'] = cust_ext_flag['Customer Name'].apply(external_bankruptcy_status)
     
         df = df.merge(cust_ext_flag, how = 'left', on = 'Customer Name')
