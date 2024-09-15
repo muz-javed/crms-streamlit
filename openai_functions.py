@@ -9,7 +9,7 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_community.vectorstores import FAISS
 
 # api_key = "sk-svcacct-GKTLsVX_k40dbZcyLsSOm5xxeWofLmuLUa6J9vxhEuL6DT3BlbkFJQFKZyZNQh3pLQeGSd5qsJuRKPBjAxOpZAqzuYV_erZ-AA"
-api_key = "sk-svcacct-v2jYMNkCPA_UyAU5hSt69i4IyQpoxmwd40rDlZZCFG4TcskWDaaivrZU3YGrwaXT3BlbkFJL8Ljpmv20S_UndywBoFE24atCP4HATx2pJ5s7_RTpeNQrKzv-fOaJjy5HMFJI8gA"
+api_key = "sk-svcacct-1zPs3N4CuXrMJgUKFmOz0GBKT3iYpz6q9xXazC8pwaO17jvFUW7I9lIVO86sqQ1T3BlbkFJCiN4obeFtNBA7ggV6_P4txg2trDGM6MGolx8I18SrcNqOce1AquOz-QMRfX8W2gA"
 GOOGLE_API_KEY = "AIzaSyBjWM0cyxXBjoiRgdh7cFbSJImF6U05HpU"
 GOOGLE_CSE_ID = "d6a7169ef0a274385"
 
