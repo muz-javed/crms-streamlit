@@ -26,14 +26,13 @@ def load_df_to_bq(df, dataset_id, table_id):
   # Step 1: Update 'latest' column in the existing table to 0
   # --------------------
   # Define the SQL query to update 'latest' column to 0
-  # update_query = f"""
-  # UPDATE `{table_full_id}`
-  # SET latest = 0
-  # """
-  
-  # # Execute the query
-  # query_job = client.query(update_query)
-  # query_job.result()
+  update_query = f"""
+  UPDATE `{table_full_id}`
+  SET latest = 0
+  """
+  # Execute the query
+  query_job = client.query(update_query)
+  query_job.result()
 
 
   # --------------------
@@ -44,7 +43,6 @@ def load_df_to_bq(df, dataset_id, table_id):
       autodetect=True,
       write_disposition=bigquery.WriteDisposition.WRITE_APPEND #WRITE_TRUNCATE  # This overwrites the table if it already exists
   )
-  
   # Load the DataFrame into the BigQuery table
   load_job = client.load_table_from_dataframe(df, table_full_id, job_config=job_config)  # Make an API request.
   load_job.result()  # Wait for the job to complete.
