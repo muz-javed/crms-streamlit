@@ -20,11 +20,29 @@ def load_df_to_bq(df, dataset_id, table_id):
   
   # Define your dataset and table name
   table_full_id = f"{client.project}.{dataset_id}.{table_id}"
+
+
+  # --------------------
+  # Step 1: Update 'latest' column in the existing table to 0
+  # --------------------
+  # Define the SQL query to update 'latest' column to 0
+  # update_query = f"""
+  # UPDATE `{table_full_id}`
+  # SET latest = 0
+  # """
   
+  # # Execute the query
+  # query_job = client.query(update_query)
+  # query_job.result()
+
+
+  # --------------------
+  # Step 2: Append new data from df into the table
+  # --------------------
   # Define the job configuration with schema autodetection
   job_config = bigquery.LoadJobConfig(
       autodetect=True,
-      write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE  # This overwrites the table if it already exists
+      write_disposition=bigquery.WriteDisposition.WRITE_APPEND#WRITE_TRUNCATE  # This overwrites the table if it already exists
   )
   
   # Load the DataFrame into the BigQuery table
