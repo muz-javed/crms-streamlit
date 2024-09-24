@@ -42,7 +42,7 @@ def load_df_to_bq(df, dataset_id, table_id):
   # Define the job configuration with schema autodetection
   job_config = bigquery.LoadJobConfig(
       autodetect=True,
-      write_disposition=bigquery.WriteDisposition.WRITE_APPEND#WRITE_TRUNCATE  # This overwrites the table if it already exists
+      write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE  # This overwrites the table if it already exists
   )
   
   # Load the DataFrame into the BigQuery table
