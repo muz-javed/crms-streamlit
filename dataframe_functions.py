@@ -21,21 +21,17 @@ def load_df_to_bq(df, dataset_id, table_id):
   # Define your dataset and table name
   table_full_id = f"{client.project}.{dataset_id}.{table_id}"
 
-
-
-  max_date = df['added_at'].max()
-
-
   # --------------------
   # Step 1: Update 'latest' column in the existing table to 0
   # --------------------
   # Define the SQL query to update 'latest' column to 0
+
+  max_date = df['added_at'].max()
+  
   update_query = f"""UPDATE `{table_full_id}` SET latest = 0 WHERE added_at != '{max_date}'"""
-  st.write(update_query)
   # Execute the query
   query_job = client.query(update_query)
   query_job.result()
-
 
   # --------------------
   # Step 2: Append new data from df into the table
