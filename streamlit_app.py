@@ -280,6 +280,10 @@ if upload_raw_file:
 
     df_final.rename(columns = {"default_trigger":"utp_trigger"}, inplace = True)
 
+    df_final['latest'] = 1
+    final_df_retail['latest'] = 1
+    final_df_wholesale['latest'] = 1
+
 
     with st.spinner('Data is being loaded...'):
         load_df_to_bq(df_final.sort_values('customer_id'), 'crms_dataset', 'utp_raw')
