@@ -30,7 +30,7 @@ def load_df_to_bq(df, dataset_id, table_id):
   # Step 1: Update 'latest' column in the existing table to 0
   # --------------------
   # Define the SQL query to update 'latest' column to 0
-  update_query = f"""UPDATE `{table_full_id}` SET latest = 0 WHERE added_at != {max_date}"""
+  update_query = f"""UPDATE `{table_full_id}` SET latest = 0 WHERE added_at != '{max_date}'"""
   st.write(update_query)
   # Execute the query
   query_job = client.query(update_query)
