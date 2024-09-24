@@ -26,7 +26,7 @@ st.markdown("""
     }
     </style>
     """, unsafe_allow_html=True)
-
+ 
 with st.sidebar:
     cols = st.columns([0.3,2.25,1.7])
     with cols[1]:
