@@ -90,6 +90,7 @@ if upload_raw_file:
         df = bank_flag(df)
         df = dbr_flag(df)
         df = litigation_flag(df)
+        df = breach_major_terms_OR_non_payments(df)
         df = capable_but_unwilling_flag(df, default_rating)
         df = likelihood_of_bankruptcy(df, default_rating)
         df = economic_loss_flag(df, df_assumptions)
