@@ -47,7 +47,7 @@ def crisis_in_obligor_sector(df):
 
     df = df.merge(sector_df[["Sector", "Crisis in the obligor's sector"]], how = 'left', on = 'Sector').reset_index(drop = True)
 
-    df.loc[df["Crisis in the obligor's sector"].isna(), "Crisis in the obligor's sector"] = 0
+    # df.loc[df["Crisis in the obligor's sector"].isna(), "Crisis in the obligor's sector"] = 0
 
     return df
 
