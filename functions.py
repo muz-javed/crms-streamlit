@@ -55,6 +55,13 @@ def litigation_flag(df):
 
     return df
 
+def breach_major_terms_OR_non_payments(df):
+    df["Breach of major terms or non-payment"] = 0
+    df.loc[(df['DPD'] > 0) & (df['Breach of Major Terms'] == 1), 'Breach of major terms or non-payment'] = 1
+
+    return df
+    
+
 # Loss of key staff flag
 def loss_of_key_staff(df):
     df["A loss of key staff to obligor's organization"] = 0
