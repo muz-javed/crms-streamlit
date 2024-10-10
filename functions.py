@@ -13,6 +13,12 @@ import streamlit as st
 
 #     return df
 
+
+
+
+# Crisis in obligor's sector
+def crisis_in_obligor_sector(df)
+
 # Account Specific Provisions
 def specific_provision_held(df):
     df['Account-specific provision held'] = 0
