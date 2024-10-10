@@ -252,7 +252,7 @@ def income_degradation_flag(df, df_income_source):
     current_date_df = current_date_df.merge(two_yrs_df_grouped, how = 'left', on = 'Customer ID')
     
     current_date_df['std_dev'] = current_date_df['var_funds'].pow(0.5)
-    current_date_df['lower_bound'] =current_date_df['avg_funds'] - (0.5 * current_date_df['std_dev'])
+    current_date_df['lower_bound'] =current_date_df['avg_funds'] - current_date_df['std_dev']
     
     current_date_df["Obligor's income sources no longer exist or distressed"] = 0
     current_date_df.loc[current_date_df['Funds'] < current_date_df['lower_bound'], "Obligor's income sources no longer exist or distressed"] = 1
