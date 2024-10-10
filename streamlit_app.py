@@ -105,6 +105,7 @@ if upload_raw_file:
         df = obligor_not_in_uae_3m(df, df_login_history)
         df = repeated_restructuring_flag(df, df_assumptions)
         df = cbuae_defaulted(df, df_cb_defaults)
+        df = crisis_in_obligor_sector(df)
     
         
         # wholesale_custs = list(set(df[df['Wholesale Flag'] == 1]['Customer Name']))
@@ -117,7 +118,7 @@ if upload_raw_file:
     
         df["External Bankruptcy Flag"] = 0
         df["Obligor classified default by rating agency"] = 0
-        df["Crisis in the obligor's sector"] = 0
+        # df["Crisis in the obligor's sector"] = 0
         df["Subsidiary default with obligor guarantee"] = 0
         # df["Breach of major terms or non-payment"] = 0
 
