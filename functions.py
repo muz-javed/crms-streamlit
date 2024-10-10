@@ -17,7 +17,43 @@ import streamlit as st
 
 
 # Crisis in obligor's sector
-def crisis_in_obligor_sector(df)
+def crisis_in_obligor_sector(df):
+    obg_sec_df = pd.read_excel("Obligor's Sector Raw Data.xlsx")
+    
+    date_columns = obg_sec_df.columns[5:]
+    date_columns = pd.to_datetime(date_columns, errors='coerce')
+    date_columns_sorted = date_columns.sort_values(ascending=True)
+    dates_with_6_month_interval = date_columns_sorted[::6]
+    
+    obg_sec_final = obg_sec_df[list(obg_sec_df.columns[:5]) + list(dates_with_6_month_interval)]
+
+    obg_sec_diff_df = obg_sec_final.set_index(list(obg_sec_df.columns[:5])).diff(axis=1).reset_index()
+    obg_sec_diff_df['comp_avg'] = obg_sec_diff_df[dates_with_6_month_interval].mean(axis=1, skipna=True)
+    
+    obg_sec_diff_df.columns = obg_sec_diff_df.columns.astype(str)
+    
+    obg_sec_diff_df = obg_sec_diff_df[~obg_sec_diff_df['comp_avg'].isna()]
+    obg_sec_diff_df = obg_sec_diff_df[~obg_sec_diff_df['2020-07-30 00:00:00'].isna()].reset_index(drop = True)
+
+    sector_df = obg_sec_diff_df.groupby('Sector').agg(avg = ('comp_avg', 'mean'),
+                                                  var = ('comp_avg', 'var'),
+                                                  latest_avg = ('2020-07-30 00:00:00', 'mean')).reset_index()
+
+    sector_df['std_dev'] = sector_df['var'].pow(0.5)
+    sector_df['lower_bound'] = sector_df['avg'] - sector_df['std_dev']
+    
+    sector_df["Crisis in the obligor's sector"] = 0
+    sector_df.loc[sector_df['latest_avg'] < sector_df['lower_bound'], "Crisis in the obligor's sector"] = 1
+
+    df = df.merge(sector_df[["Sector", "Crisis in the obligor's sector"]], how = 'left', on = 'Sector').reset_index(drop = True)
+
+    return df
+
+
+
+
+
+
 
 # Account Specific Provisions
 def specific_provision_held(df):
