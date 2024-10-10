@@ -38,7 +38,6 @@ def crisis_in_obligor_sector(df):
     sector_df = obg_sec_diff_df.groupby('Sector').agg(avg = ('comp_avg', 'mean'),
                                                   var = ('comp_avg', 'var'),
                                                   latest_avg = ('2020-07-30 00:00:00', 'mean')).reset_index()
-
     sector_df['std_dev'] = sector_df['var'].pow(0.5)
     sector_df['lower_bound'] = sector_df['avg'] - sector_df['std_dev']
     
@@ -46,8 +45,7 @@ def crisis_in_obligor_sector(df):
     sector_df.loc[sector_df['latest_avg'] < sector_df['lower_bound'], "Crisis in the obligor's sector"] = 1
 
     df = df.merge(sector_df[["Sector", "Crisis in the obligor's sector"]], how = 'left', on = 'Sector').reset_index(drop = True)
-
-    # df.loc[df["Crisis in the obligor's sector"].isna(), "Crisis in the obligor's sector"] = 0
+    df.loc[df["Crisis in the obligor's sector"].isna(), "Crisis in the obligor's sector"] = 0
 
     return df
 
