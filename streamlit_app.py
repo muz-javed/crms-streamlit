@@ -118,7 +118,7 @@ if upload_raw_file:
         df["Obligor classified default by rating agency"] = 0
         df["Crisis in the obligor's sector"] = 0
         df["Subsidiary default with obligor guarantee"] = 0
-        df["Breach of major terms or non-payment"] = 0
+        # df["Breach of major terms or non-payment"] = 0
 
 
         
